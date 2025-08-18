@@ -1,0 +1,5 @@
+streamlit
+pyyaml          # for loading schema files
+simpy           # if your simulation uses SimPy
+pandas          # if you output dataframes
+numpy

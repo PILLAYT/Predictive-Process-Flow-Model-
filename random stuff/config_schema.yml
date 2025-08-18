@@ -1,0 +1,4628 @@
+SIM_TIME:
+  type: int
+  default: 10000
+  min: 0
+  max: 200000
+  label: "Simulation Duration (min)"
+INTERARRIVAL:
+  type: int
+  default: 0
+  min: 0
+  max: 0
+  label: "Delay Between Billet Cut Operations"
+Forklift_Capacity:
+  type: int
+  default: 100
+  min: 0
+  max: 1000
+  label: "Available Forklifts"
+WC_REJECT_INTERVAL:
+  type: int
+  default: 1305
+  min: 0
+  max: 13050
+  label: "Weigh and Classift Reject Interval (before nosing)"
+TT_FAIL_INTERVAL:
+  type: int
+  default: 43200
+  min: 0
+  max: 432000
+  label: "Tensile Test Fail Interval:"
+SAW1_process_time:
+  type: float
+  default: 6.62
+  min: 0.0
+  max: 33.1
+  label: "Billet Cut 1 Cycle Time"
+SAW1_OEE:
+  type: float
+  default: 0.8313
+  min: 0.0
+  max: 1.0
+  label: "Billet Cut 1 OEE"
+WIPo_SAW1_tt1:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 1 Transport Time to Induction Heater 1"
+WIPo_SAW1_tt2:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 1 Transport Time to Induction Heater 2"
+SAW2_process_time:
+  type: float
+  default: 6.46
+  min: 0.0
+  max: 32.3
+  label: "Billet Cut 2 Cycle Time"
+SAW2_OEE:
+  type: float
+  default: 0.8313
+  min: 0.0
+  max: 1.0
+  label: "Billet Cut 2 Availability"
+WIPo_SAW2_tt1:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 2 Transport Time to Induction Heater 1"
+WIPo_SAW2_tt2:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 2 Transport Time to Induction Heater 2"
+SAW3_process_time:
+  type: float
+  default: 12.53
+  min: 0.0
+  max: 62.65
+  label: "Billet Cut 3 Cycle Time"
+SAW3_OEE:
+  type: float
+  default: 0.8313
+  min: 0.0
+  max: 1.0
+  label: "Billet Cut 3 Availability"
+WIPo_SAW3_tt1:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 3 Transport Time to Induction Heater 1"
+WIPo_SAW3_tt2:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 3 Transport Time to Induction Heater 2"
+SAW4_process_time:
+  type: float
+  default: 12.15
+  min: 0.0
+  max: 60.75
+  label: "Billet Cut 4 Cycle Time"
+SAW4_OEE:
+  type: float
+  default: 0.8313
+  min: 0.0
+  max: 1.0
+  label: "Billet Cut 4 Availability"
+WIPo_SAW4_tt1:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 4 Transport Time to Induction Heater 2"
+SAW5_process_time:
+  type: float
+  default: 12.15
+  min: 0.0
+  max: 60.75
+  label: "Billet Cut 5 Cycle Time"
+SAW5_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Billet Cut 5 Availability"
+WIPo_SAW5_tt1:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 5 Transport Time to Induction Heater 2"
+SAW6_process_time:
+  type: float
+  default: 6.62
+  min: 0.0
+  max: 33.1
+  label: "Billet Cut 6 Cycle Time"
+SAW6_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Billet Cut 6 Availability"
+WIPo_SAW6_tt1:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 6 Transport Time to Induction Heater 1"
+WIPo_SAW6_tt2:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 6 Transport Time to Induction Heater 2"
+SAW7_process_time:
+  type: float
+  default: 6.46
+  min: 0.0
+  max: 32.3
+  label: "Billet Cut 7 Cycle Time"
+SAW7_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Billet Cut 7 Availability"
+WIPo_SAW7_tt1:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 7 Transport Time to Induction Heater 1"
+WIPo_SAW7_tt2:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 7 Transport Time to Induction Heater 2"
+SAW8_process_time:
+  type: float
+  default: 12.53
+  min: 0.0
+  max: 62.65
+  label: "Billet Cut 8 Cycle Time"
+SAW8_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Billet Cut 8 Availability"
+WIPo_SAW8_tt1:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 8 Transport Time to Induction Heater 1"
+WIPo_SAW8_tt2:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 8 Transport Time to Induction Heater 2"
+SAW9_process_time:
+  type: float
+  default: 12.15
+  min: 0.0
+  max: 60.75
+  label: "Billet Cut 9 Cycle Time"
+SAW9_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Billet Cut 9 Availability"
+WIPo_SAW9_tt1:
+  type: float
+  default: 1.0482
+  min: 0.0
+  max: 5.241
+  label: "Billet Cut 9 Transport Time to Induction Heater 2"
+# WIPi_IH1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_IH2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+IH1_process_time:
+  type: float
+  default: 3.78
+  min: 0.0
+  max: 18.9
+  label: "Induction Heater 1 Cycle Time"
+IH1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Induction Heater 1 Availability"
+IH2_process_time:
+  type: float
+  default: 3.78
+  min: 0.0
+  max: 18.9
+  label: "Induction Heater 2 Cycle Time"
+IH2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Induction Heater 2 Availability"
+P1_process_time:
+  type: float
+  default: 2.54
+  min: 0.0
+  max: 12.7
+  label: "Press 1 Cycle Time"
+P1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Press 1 Availability"
+# WIPi_IH3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+IH3_process_time:
+  type: float
+  default: 3.78
+  min: 0.0
+  max: 18.9
+  label: "Induction Heater 3 Cycle Time"
+IH3_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Induction Heater 3 Availability"
+P2_process_time:
+  type: float
+  default: 3.67
+  min: 0.0
+  max: 18.35
+  label: "Press 2 Cycle Time"
+P2_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Press 2 Availability"
+storage_after_press_tt1:
+  type: float
+  default: 1.2114
+  min: 0.0
+  max: 6.057
+  label: "Cooling to Cut to Length 1"
+storage_after_press_tt2:
+  type: float
+  default: 1.2114
+  min: 0.0
+  max: 6.057
+  label: "Cooling to Cut to Length 2"
+storage_after_press_tt3:
+  type: float
+  default: 1.2114
+  min: 0.0
+  max: 6.057
+  label: "Cooling to Cut to Length 3"
+storage_after_press_tt4:
+  type: float
+  default: 1.2114
+  min: 0.0
+  max: 6.057
+  label: "Cooling to Cut to Length 4"
+CL1_process_time:
+  type: float
+  default: 9.36
+  min: 0.0
+  max: 46.8
+  label: "Cut to Length 1 Cycle Time"
+CL1_OEE:
+  type: float
+  default: 0.805
+  min: 0.0
+  max: 1.0
+  label: "Cut to Length 1 Availability"
+CL2_process_time:
+  type: float
+  default: 7.23
+  min: 0.0
+  max: 36.150000000000006
+  label: "Cut to Length 2 Cycle Time"
+CL2_OEE:
+  type: float
+  default: 0.805
+  min: 0.0
+  max: 1.0
+  label: "Cut to Length 2 Availability"
+CL3_process_time:
+  type: float
+  default: 8.02
+  min: 0.0
+  max: 40.099999999999994
+  label: "Cut to Length 3 Cycle Time"
+CL3_OEE:
+  type: float
+  default: 0.805
+  min: 0.0
+  max: 1.0
+  label: "Cut to Length 3 Availability"
+CL4_process_time:
+  type: float
+  default: 7.23
+  min: 0.0
+  max: 36.150000000000006
+  label: "Cut to Length 4 Cycle Time"
+CL4_OEE:
+  type: float
+  default: 0.805
+  min: 0.0
+  max: 1.0
+  label: "Cut to Length 4 Availability"
+CL5_process_time:
+  type: float
+  default: 9.36
+  min: 0.0
+  max: 46.8
+  label: "Cut to Length 5 Cycle Time"
+CL5_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Cut to Length 5 Availability"
+CL6_process_time:
+  type: float
+  default: 7.23
+  min: 0.0
+  max: 36.150000000000006
+  label: "Cut to Length 6 Cycle Time"
+CL6_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Cut to Length 6 Availability"
+CL7_process_time:
+  type: float
+  default: 8.02
+  min: 0.0
+  max: 40.099999999999994
+  label: "Cut to Length 7 Cycle Time"
+CL7_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Cut to Length 7 Availability"
+CL8_process_time:
+  type: float
+  default: 7.23
+  min: 0.0
+  max: 36.150000000000006
+  label: "Cut to Length 8 Cycle Time"
+CL8_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Cut to Length 8 Availability"
+WIPo_CL_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Cut to Length 1 to Clean Cavity"
+WIPo_CL_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Cut to Length 2 to Clean Cavity"
+WIPo_CL_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Cut to Length 3 to Clean Cavity"
+WIPo_CL_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Cut to Length 4 to Clean Cavity"
+# WIPi_SB1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+SB1_process_time:
+  type: float
+  default: 2.41
+  min: 0.0
+  max: 12.05
+  label: "Clean Cavity 1 Cycle Time"
+SB1_OEE:
+  type: float
+  default: 0.833
+  min: 0.0
+  max: 1.0
+  label: "Clean Cavity 1 Availability"
+SB2_process_time:
+  type: float
+  default: 2.41
+  min: 0.0
+  max: 12.05
+  label: "Clean Cavity 2 Cycle Time"
+SB2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Clean Cavity 2 Availability"
+SB3_process_time:
+  type: float
+  default: 2.41
+  min: 0.0
+  max: 12.05
+  label: "Clean Cavity 3 Cycle Time"
+SB3_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Clean Cavity 3 Availability"
+SB4_process_time:
+  type: float
+  default: 2.41
+  min: 0.0
+  max: 12.05
+  label: "Clean Cavity 4 Cycle Time"
+SB4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Clean Cavity 4 Availability"
+WIPo_SB1_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Clean Cavity 1 to Cell 1 Storage"
+WIPo_SB2_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Clean Cavity 2 to Cell 1 Storage"
+WIPo_SB3_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Clean Cavity 3 to Cell 1 Storage"
+WIPo_SB4_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Clean Cavity 4 to Cell 1 Storage"
+finished_goods_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Cell 1 Storage to Gantry"
+WIPo_GantryIn_tt1:
+  type: float
+  default: 0.25
+  min: 0.0
+  max: 1.25
+  label: "Gantry Loading Time"
+WIPo_GantryConv_tt1:
+  type: float
+  default: 0.25
+  min: 0.0
+  max: 1.25
+  label: "Gantry Conveyor Release Interval"
+# WIPi_ROD_tt1:
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+#   label: ""
+# WIPi_ROD_tt2:
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+# WIPi_ROD_tt3:
+# label: ""
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+#   label: ""
+# WIPi_ROD_tt4:
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+#   label: ""
+# WIPi_ROD_tt5:
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+#   label: ""
+# WIPi_ROD_tt6:
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+#   label: ""
+# WIPi_ROD_tt7:
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+#   label: ""
+# WIPi_ROD_tt8:
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+#   label: ""
+# WIPi_ROD_tt9:
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+#   label: ""
+# WIPi_ROD_tt10:
+#   type: float
+#   default: 2.5
+#   min: 0.0
+#   max: 12.5
+#   label: ""
+ROD1_process_time:
+  type: float
+  default: 11.26
+  min: 0.0
+  max: 56.3
+  label: "Rough OD 1 Cycle Time"
+ROD1_OEE:
+  type: float
+  default: 0.4242
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 1 Availability"
+ROD2_process_time:
+  type: float
+  default: 11.38
+  min: 0.0
+  max: 56.900000000000006
+  label: "Rough OD 2 Cycle Time"
+ROD2_OEE:
+  type: float
+  default: 0.4242
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 2 Availability"
+ROD3_process_time:
+  type: float
+  default: 11.26
+  min: 0.0
+  max: 56.3
+  label: "Rough OD 3 Cycle Time"
+ROD3_OEE:
+  type: float
+  default: 0.4242
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 3 Availability"
+ROD4_process_time:
+  type: float
+  default: 11.38
+  min: 0.0
+  max: 56.900000000000006
+  label: "Rough OD 4 Cycle Time"
+ROD4_OEE:
+  type: float
+  default: 0.4242
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 4 Availability"
+ROD5_process_time:
+  type: float
+  default: 11.26
+  min: 0.0
+  max: 56.3
+  label: "Rough OD 5 Cycle Time"
+ROD5_OEE:
+  type: float
+  default: 0.4242
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 5 Availability"
+ROD6_process_time:
+  type: float
+  default: 11.26
+  min: 0.0
+  max: 56.3
+  label: "Rough OD 6 Cycle Time"
+ROD6_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 6 Availability"
+ROD7_process_time:
+  type: float
+  default: 11.38
+  min: 0.0
+  max: 56.3
+  label: "Rough OD 7 Cycle Time"
+ROD7_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 7 Availability"
+ROD8_process_time:
+  type: float
+  default: 11.26
+  min: 0.0
+  max: 56.3
+  label: "Rough OD 8 Cycle Time"
+ROD8_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 8 Availability"
+ROD9_process_time:
+  type: float
+  default: 11.38
+  min: 0.0
+  max: 56.900000000000006
+  label: "Rough OD 9 Cycle Time"
+ROD9_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 9 Availability"
+ROD10_process_time:
+  type: float
+  default: 11.26
+  min: 0.0
+  max: 56.3
+  label: "Rough OD 10 Cycle Time"
+ROD10_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough OD 10 Availability"
+WIPo_ROD1_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 1 to Rough ID"
+WIPo_ROD2_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 2 to Rough ID"
+WIPo_ROD3_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 3 to Rough ID"
+WIPo_ROD4_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 4 to Rough ID"
+WIPo_ROD5_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 5 to Rough ID"
+WIPo_ROD6_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 6 to Rough ID"
+WIPo_ROD7_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 7 to Rough ID"
+WIPo_ROD8_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 8 to Rough ID"
+WIPo_ROD9_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 9 to Rough ID"
+WIPo_ROD10_tt1:
+  type: float
+  default: 1.0488
+  min: 0.0
+  max: 5.244
+  label: "Rough OD 10 to Rough ID"
+# WIPi_RID1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RID2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RID3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RID4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RID5_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RID6_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+RID1_process_time:
+  type: float
+  default: 8.93
+  min: 0.0
+  max: 44.65
+  label: "Rough ID 1 Cycle Time"
+RID1_OEE:
+  type: float
+  default: 0.7251
+  min: 0.0
+  max: 1.0
+  label: "Rough ID 1 Availability"
+RID2_process_time:
+  type: float
+  default: 8.93
+  min: 0.0
+  max: 44.65
+  label: "Rough ID 2 Cycle Time"
+RID2_OEE:
+  type: float
+  default: 0.7251
+  min: 0.0
+  max: 1.0
+  label: "Rough ID 2 Availability"
+RID3_process_time:
+  type: float
+  default: 8.93
+  min: 0.0
+  max: 44.65
+  label: "Rough ID 3 Cycle Time"
+RID3_OEE:
+  type: float
+  default: 0.7251
+  min: 0.0
+  max: 1.0
+  label: "Rough ID 3 Availability"
+RID4_process_time:
+  type: float
+  default: 8.93
+  min: 0.0
+  max: 44.65
+  label: "Rough ID 4 Cycle Time"
+RID4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough ID 4 Availability"
+RID5_process_time:
+  type: float
+  default: 8.93
+  min: 0.0
+  max: 44.65
+  label: "Rough ID 5 Cycle Time"
+RID5_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough ID 5 Availability"
+RID6_process_time:
+  type: float
+  default: 8.93
+  min: 0.0
+  max: 44.65
+  label: "Rough ID 6 Cycle Time"
+RID6_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough ID 6 Availability"
+WIPo_RID1_tt1:
+  type: float
+  default: 1.1301
+  min: 0.0
+  max: 5.6
+  label: "Rough ID 1 to Base Recess"
+WIPo_RID2_tt1:
+  type: float
+  default: 1.1301
+  min: 0.0
+  max: 5.6
+  label: "Rough ID 2 to Base Recess"
+WIPo_RID3_tt1:
+  type: float
+  default: 1.1301
+  min: 0.0
+  max: 5.6
+  label: "Rough ID 3 to Base Recess"
+WIPo_RID4_tt1:
+  type: float
+  default: 1.1301
+  min: 0.0
+  max: 5.6
+  label: "Rough ID 4 to Base Recess"
+WIPo_RID5_tt1:
+  type: float
+  default: 1.1301
+  min: 0.0
+  max: 5.6
+  label: "Rough ID 5 to Base Recess"
+WIPo_RID6_tt1:
+  type: float
+  default: 1.1301
+  min: 0.0
+  max: 5.6
+  label: "Rough ID 6 to Base Recess"
+# WIPi_BR1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_BR2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_BR3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_BR4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_BR5_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_BR6_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+BR1_process_time:
+  type: float
+  default: 8.8
+  min: 0.0
+  max: 44.0
+  label: "Base Recess 1 Cycle Time"
+BR1_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Base Recess 1 Availability"
+BR2_process_time:
+  type: float
+  default: 8.8
+  min: 0.0
+  max: 44.0
+  label: "Base Recess 2 Cycle Time"
+BR2_OEE:
+  type: float
+  default: 0.8
+  min: 0.0
+  max: 1.0
+  label: "Base Recess 2 Availability"
+BR3_process_time:
+  type: float
+  default: 8.8
+  min: 0.0
+  max: 44.0
+  label: "Base Recess 3 Cycle Time"
+BR3_OEE:
+  type: float
+  default: 0.8
+  min: 0.0
+  max: 1.0
+  label: "Base Recess 2 Availability"
+BR4_process_time:
+  type: float
+  default: 8.8
+  min: 0.0
+  max: 44.0
+  label: "Base Recess 4 Cycle Time"
+BR4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Base Recess 4 Availability"
+BR5_process_time:
+  type: float
+  default: 8.8
+  min: 0.0
+  max: 44.0
+  label: "Base Recess 5 Cycle Time"
+BR5_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Base Recess 5 Availability"
+BR6_process_time:
+  type: float
+  default: 8.8
+  min: 0.0
+  max: 44.0
+  label: "Base Recess 6 Cycle Time"
+BR6_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Base Recess 6 Availability"
+WIPo_BR1_tt1:
+  type: float
+  default: 2
+  min: 0.0
+  max: 10.0
+  label: "Base Recess 1 to WIP Area"
+WIPo_BR2_tt1:
+  type: float
+  default: 2
+  min: 0.0
+  max: 10.0
+  label: "Base Recess 2 to WIP Area"
+WIPo_BR3_tt1:
+  type: float
+  default: 2
+  min: 0.0
+  max: 10.0
+  label: "Base Recess 3 to WIP Area"
+WIPo_BR4_tt1:
+  type: float
+  default: 2
+  min: 0.0
+  max: 10.0
+  label: "Base Recess 4 to WIP Area"
+WIPo_BR5_tt1:
+  type: float
+  default: 2
+  min: 0.0
+  max: 10.0
+  label: "Base Recess 5 to WIP Area"
+WIPo_BR6_tt1:
+  type: float
+  default: 2
+  min: 0.0
+  max: 10.0
+  label: "Base Recess 6 to WIP Area"
+finished_goods2_tt1:
+  type: float
+  default: 4
+  min: 0.0
+  max: 20.0
+  label: "WIP Area to Weigh & Classify"
+# WIPi_WC_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+WC_process_time:
+  type: float
+  default: 0.57
+  min: 0.0
+  max: 2.84
+  label: "Weigh & Classify Cycle Time"
+WC_OEE:
+  type: float
+  default: 0.9
+  min: 0.0
+  max: 1.0
+  label: "Weigh & Classify Availability"
+WIPo_WC_tt1:
+  type: float
+  default: 0
+  min: 0.0
+  max: 0.0
+  label: "Weigh & Classify to Apply Graphite"
+# WIPi_GR_tt1:
+#   type: float
+#   default: 0.25
+#   min: 0.0
+#   max: 1.25
+#   label: ""
+GR_process_time:
+  type: float
+  default: 31.5
+  min: 0.0
+  max: 157.5
+  label: "Apply Graphite Cycle Time"
+GR_OEE:
+  type: float
+  default: 0.9
+  min: 0.0
+  max: 1.0
+  label: "Apply Graphite Availability"
+WIPo_GR_tt1:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Apply Graphite to Nosing Induction Heating"
+NIH1_process_time:
+  type: float
+  default: 1.75
+  min: 0.0
+  max: 8.75
+  label: "Nosing Induction Heater 1 Cycle Time"
+NIH1_OEE:
+  type: float
+  default: 0.77
+  min: 0.0
+  max: 1.0
+  label: "Nosing Induction Heater 1 Availability"
+NIH2_process_time:
+  type: float
+  default: 1.75
+  min: 0.0
+  max: 8.75
+  label: "Nosing Induction Heater 2 Cycle Time"
+NIH2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Nosing Induction Heater 2 Availability"
+NP1_process_time:
+  type: float
+  default: 2.68
+  min: 0.0
+  max: 13.4
+  label: "Nosing Press 1 Cycle Time"
+NP1_OEE:
+  type: float
+  default: 0.77
+  min: 0.0
+  max: 1.0
+  label: "Nosing Press 1 Availability"
+NP2_process_time:
+  type: float
+  default: 2.68
+  min: 0.0
+  max: 13.4
+  label: "Nosing Press 2 Cycle Time"
+NP2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Nosing Press 2 Availability"
+WIPo_NP_tt1:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Nosing to Rough Nose Bore 1"
+WIPo_NP_tt2:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Nosing to Rough Nose Bore 2"
+WIPo_NP_tt3:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Nosing to Rough Nose Bore 3"
+WIPo_NP_tt4:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Nosing to Rough Nose Bore 4"
+# WIPi_RNB1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+RNB1_process_time:
+  type: float
+  default: 8.95
+  min: 0.0
+  max: 44.75
+  label: "Rough Nose Bore 1 Cycle Time"
+RNB1_OEE:
+  type: float
+  default: 0.899
+  min: 0.0
+  max: 1.0
+  label: "Rough Nose Bore 1 Availability"
+WIPo_RNB1_tt1:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Rough Nose Bore 1 to WIP Area"
+# WIPi_RNB2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+RNB2_process_time:
+  type: float
+  default: 8.95
+  min: 0.0
+  max: 44.75
+  label: "Rough Nose Bore 2 Cycle Time"
+RNB2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough Nose Bore 2 Availability"
+WIPo_RNB2_tt1:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Rough Nose Bore 2 to WIP Area"
+# WIPi_RNB3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+RNB3_process_time:
+  type: float
+  default: 8.95
+  min: 0.0
+  max: 44.75
+  label: "Rough Nose Bore 3 Cycle Time"
+RNB3_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough Nose Bore 3 Availability"
+WIPo_RNB3_tt1:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Rough Nose Bore 3 to WIP Area"
+# WIPi_RNB4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+RNB4_process_time:
+  type: float
+  default: 8.95
+  min: 0.0
+  max: 44.75
+  label: "Rough Nose Bore 4 Cycle Time"
+RNB4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Rough Nose Bore 4 Availability"
+WIPo_RNB4_tt1:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Rough Nose Bore 4 to WIP Area"
+finished_goods3_tt1:
+  type: float
+  default: 2.33
+  min: 0.0
+  max: 11.65
+  label: "WIP Area to Pre-Ogive 1"
+finished_goods3_tt2:
+  type: float
+  default: 2.33
+  min: 0.0
+  max: 11.65
+  label: "WIP Area to Pre-Ogive 2"
+finished_goods3_tt3:
+  type: float
+  default: 2.33
+  min: 0.0
+  max: 11.65
+  label: "WIP Area to Pre-Ogive 3"
+finished_goods3_tt4:
+  type: float
+  default: 2.33
+  min: 0.0
+  max: 11.65
+  label: "WIP Area to Pre-Ogive 4"
+finished_goods3_tt5:
+  type: float
+  default: 2.33
+  min: 0.0
+  max: 11.65
+  label: "WIP Area to Pre-Ogive 5"
+finished_goods3_tt6:
+  type: float
+  default: 2.33
+  min: 0.0
+  max: 11.65
+  label: "WIP Area to Pre-Ogive 6"
+# WIPi_PO1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_PO2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_PO3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_PO4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_PO5_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_PO6_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+PO1_process_time:
+  type: float
+  default: 7.32
+  min: 0.0
+  max: 36.6
+  label: "Pre-Ogive 1 Cyle Time"
+PO1_OEE:
+  type: float
+  default: 0.68
+  min: 0.0
+  max: 1.0
+  label: "Pre-Ogive 1 Availability"
+PO2_process_time:
+  type: float
+  default: 7.32
+  min: 0.0
+  max: 36.6
+  label: "Pre-Ogive 2 Cyle Time"
+PO2_OEE:
+  type: float
+  default: 0.68
+  min: 0.0
+  max: 1.0
+  label: "Pre-Ogive 2 Availability"
+PO3_process_time:
+  type: float
+  default: 7.32
+  min: 0.0
+  max: 36.6
+  label: "Pre-Ogive 3 Cyle Time"
+PO3_OEE:
+  type: float
+  default: 0.68
+  min: 0.0
+  max: 1.0
+  label: "Pre-Ogive 3 Availability"
+PO4_process_time:
+  type: float
+  default: 7.32
+  min: 0.0
+  max: 36.6
+  label: "Pre-Ogive 4 Cyle Time"
+PO4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Pre-Ogive 4 Availability"
+PO5_process_time:
+  type: float
+  default: 7.32
+  min: 0.0
+  max: 36.6
+  label: "Pre-Ogive 5 Cyle Time"
+PO5_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Pre-Ogive 5 Availability"
+PO6_process_time:
+  type: float
+  default: 7.32
+  min: 0.0
+  max: 36.6
+  label: "Pre-Ogive 6 Cyle Time"
+PO6_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Pre-Ogive 6 Availability"
+WIPo_PO1_tt1:
+  type: float
+  default: 2.59
+  min: 0.0
+  max: 12.95
+  label: "Pre-Ogive 1 to Heat Treatment"
+WIPo_PO2_tt1:
+  type: float
+  default: 2.27
+  min: 0.0
+  max: 11.35
+  label: "Pre-Ogive 2 to Heat Treatment"
+WIPo_PO3_tt1:
+  type: float
+  default: 2.27
+  min: 0.0
+  max: 11.35
+  label: "Pre-Ogive 3 to Heat Treatment"
+WIPo_PO4_tt1:
+  type: float
+  default: 2.59
+  min: 0.0
+  max: 12.95
+  label: "Pre-Ogive 4 to Heat Treatment"
+WIPo_PO5_tt1:
+  type: float
+  default: 2.27
+  min: 0.0
+  max: 11.35
+  label: "Pre-Ogive 5 to Heat Treatment"
+WIPo_PO6_tt1:
+  type: float
+  default: 2.27
+  min: 0.0
+  max: 11.35
+  label: "Pre-Ogive 6 to Heat Treatment"
+# WIPi_HT_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+HT_process_time:
+  type: float
+  default: 8.66
+  min: 0.0
+  max: 43.3
+  label: "Heat Treatment Cycle Time"
+HT_OEE:
+  type: float
+  default: 0.75
+  min: 0.0
+  max: 1.0
+  label: "Heat Treatment Availability"
+WIPo_HT_tt1:
+  type: float
+  default: 0.13
+  min: 0.0
+  max: 0.65
+  label: "Heat Treatment to Hardness Test"
+# WIPi_SPHDT_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_SPHDT_tt2:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+SPHDT1_process_time:
+  type: float
+  default: 1.42
+  min: 0.0
+  max: 7.1
+  label: "Surface Prep for Hardness Test 1 Cycle Time"
+SPHDT1_OEE:
+  type: float
+  default: 0.96
+  min: 0.0
+  max: 1.0
+  label: "Surface Prep for Hardness Test 1 Availability"
+SPHDT2_process_time:
+  type: float
+  default: 1.42
+  min: 0.0
+  max: 7.1
+  label: "Surface Prep for Hardness Test 2 Cycle Time"
+SPHDT2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Surface Prep for Hardness Test 2 Availability"
+# WIPi_HDT1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_HDT2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+HDT1_process_time:
+  type: float
+  default: 2
+  min: 0.0
+  max: 10.0
+  label: "Hardness Test 1 Cycle Time"
+HDT1_OEE:
+  type: float
+  default: 0.96
+  min: 0.0
+  max: 1.0
+  label: "Hardness Test 1 Availability"
+HDT2_process_time:
+  type: float
+  default: 2
+  min: 0.0
+  max: 10.0
+  label: "Hardness Test 2 Cycle Time"
+HDT2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Hardness Test 2 Availability"
+WIPo_HDT_tt1:
+  type: float
+  default: 1.6504
+  min: 0.0
+  max: 8.252
+  label: "Hardness Test to WIP Area"
+test_feed_tt1:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Test Shells to Cutting"
+scrap_tt1:
+  type: float
+  default: 0
+  min: 0.0
+  max: 0.0
+  label: "Scrap Area"
+# WIPi_CUT_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_CUT_tt2:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_CUT_tt3:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_CUT_tt4:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+CUT1_process_time:
+  type: float
+  default: 13.77
+  min: 0.0
+  max: 68.85
+  label: "Cut Tensile Pieces 1 Cycle Time"
+CUT1_OEE:
+  type: float
+  default: 0.805
+  min: 0.0
+  max: 1.0
+  label: "Cut Tensile Pieces 1 Availability"
+CUT2_process_time:
+  type: float
+  default: 13.77
+  min: 0.0
+  max: 68.85
+  label: "Cut Tensile Pieces 2 Cycle Time"
+CUT2_OEE:
+  type: float
+  default: 0.805
+  min: 0.0
+  max: 1.0
+  label: "Cut Tensile Pieces 2 Availability"
+CUT3_process_time:
+  type: float
+  default: 13.77
+  min: 0.0
+  max: 68.85
+  label: "Cut Tensile Pieces 3 Cycle Time"
+CUT3_OEE:
+  type: float
+  default: 0.805
+  min: 0.0
+  max: 1.0
+  label: "Cut Tensile Pieces 3 Availability"
+CUT4_process_time:
+  type: float
+  default: 13.77
+  min: 0.0
+  max: 68.85
+  label: "Cut Tensile Pieces 4 Cycle Time"
+CUT4_OEE:
+  type: float
+  default: 0.805
+  min: 0.0
+  max: 1.0
+  label: "Cut Tensile Pieces 4 Availability"
+WIPo_CUT_tt1:
+  type: float
+  default: 1.59
+  min: 0.0
+  max: 7.95
+  label: "Cut Tensile Test Pieces to Machine Tensile Test Pieces 1"
+WIPo_CUT_tt2:
+  type: float
+  default: 1.59
+  min: 0.0
+  max: 7.95
+  label: "Cut Tensile Test Pieces to Machine Tensile Test Pieces 2"
+# WIPi_MTT1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+MTT1_process_time:
+  type: float
+  default: 13.77
+  min: 0.0
+  max: 68.85
+  label: "Machine Tensile Test Pieces 1 Cycle Time"
+MTT1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Machine Tensile Test Pieces 1 Availability"
+WIPo_MTT1_tt1:
+  type: float
+  default: 2.51
+  min: 0.0
+  max: 12.5
+  label: "Machine Tensile Test Pieces to Tensile Test 1"
+WIPo_MTT1_tt2:
+  type: float
+  default: 2.51
+  min: 0.0
+  max: 12.5
+  label: "Machine Tensile Test Pieces to Tensile Test 2"
+# WIPi_MTT2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+MTT2_process_time:
+  type: float
+  default: 13.77
+  min: 0.0
+  max: 68.85
+  label: "Machine Tensile Test Pieces 2 Cycle Time"
+MTT2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Machine Tensile Test Pieces 2 Availability"
+WIPo_MTT2_tt1:
+  type: float
+  default: 2.51
+  min: 0.0
+  max: 12.5
+  label: "Machine Tensile Test Pieces 2 to Tensile Test 1"
+WIPo_MTT2_tt2:
+  type: float
+  default: 2.51
+  min: 0.0
+  max: 12.5
+  label: "Machine Tensile Test Pieces 2 to Tensile Test 2"
+# WIPi_TT1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+TT1_process_time:
+  type: float
+  default: 4.68
+  min: 0.0
+  max: 23.4
+  label: "Tensile Test 1 Cycle Time"
+TT1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Tensile Test 1 Availability"
+# WIPi_TT2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+TT2_process_time:
+  type: float
+  default: 4.68
+  min: 0.0
+  max: 23.4
+  label: "Tensile Test 2 Cycle Time"
+TT2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Tensile Test 2 Availability"
+hold_tt1:
+  type: float
+  default: 2.43
+  min: 0.0
+  max: 12.15
+  label: "WIP Area to Hard Stamping 1"
+# WIPi_HS_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_HS_tt2:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+HS1_process_time:
+  type: float
+  default: 0.6
+  min: 0.0
+  max: 3.0
+  label: "Hard Stamping 1 Cycle Time"
+HS1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Hard Stamping 1 Availability"
+HS2_process_time:
+  type: float
+  default: 0.6
+  min: 0.0
+  max: 3.0
+  label: "Hard Stamping 2 Cycle Time"
+HS2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Hard Stamping 2 Availability"
+WIPo_HS_tt1:
+  type: float
+  default: 2.19
+  min: 0.0
+  max: 10.95
+  label: "Hard Stamping to WIP Area"
+finished_goods4_tt1:
+  type: float
+  default: 1.1667
+  min: 0.0
+  max: 5.8
+  label: "WIP Area to Final Ogive 1"
+finished_goods4_tt2:
+  type: float
+  default: 1.1667
+  min: 0.0
+  max: 5.8
+  label: "WIP Area to Final Ogive 2"
+finished_goods4_tt3:
+  type: float
+  default: 1.1667
+  min: 0.0
+  max: 5.8
+  label: "WIP Area to Final Ogive 3"
+finished_goods4_tt4:
+  type: float
+  default: 1.1667
+  min: 0.0
+  max: 5.8
+  label: "WIP Area to Final Ogive 4"
+finished_goods4_tt5:
+  type: float
+  default: 1.1667
+  min: 0.0
+  max: 5.8
+  label: "WIP Area to Final Ogive 5"
+finished_goods4_tt6:
+  type: float
+  default: 1.1667
+  min: 0.0
+  max: 5.8
+  label: "WIP Area to Final Ogive 6"
+finished_goods4_tt7:
+  type: float
+  default: 1.1667
+  min: 0.0
+  max: 5.8
+  label: "WIP Area to Final Ogive 7"
+finished_goods4_tt8:
+  type: float
+  default: 1.1667
+  min: 0.0
+  max: 5.8
+  label: "WIP Area to Final Ogive 8"
+# WIPi_FO1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FO2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FO3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FO4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FO5_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FO6_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FO7_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FO8_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+FO1_process_time:
+  type: float
+  default: 9.76
+  min: 0.0
+  max: 48.8
+  label: "Final Ogive 1 Cycle Time"
+FO1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Final Ogive 1 Availability"
+FO2_process_time:
+  type: float
+  default: 9.76
+  min: 0.0
+  max: 48.8
+  label: "Final Ogive 2 Cycle Time"
+FO2_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Final Ogive 2 Availability"
+FO3_process_time:
+  type: float
+  default: 9.76
+  min: 0.0
+  max: 48.8
+  label: "Final Ogive 3 Cycle Time"
+FO3_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Final Ogive 3 Availability"
+FO4_process_time:
+  type: float
+  default: 9.76
+  min: 0.0
+  max: 48.8
+  label: "Final Ogive 4 Cycle Time"
+FO4_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Final Ogive 4 Availability"
+FO5_process_time:
+  type: float
+  default: 9.76
+  min: 0.0
+  max: 48.8
+  label: "Final Ogive 5 Cycle Time"
+FO5_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Ogive 5 Availability"
+FO6_process_time:
+  type: float
+  default: 9.76
+  min: 0.0
+  max: 48.8
+  label: "Final Ogive 6 Cycle Time"
+FO6_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Ogive 6 Availability"
+FO7_process_time:
+  type: float
+  default: 9.76
+  min: 0.0
+  max: 48.8
+  label: "Final Ogive 7 Cycle Time"
+FO7_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Ogive 7 Availability"
+FO8_process_time:
+  type: float
+  default: 9.76
+  min: 0.0
+  max: 48.8
+  label: "Final Ogive 8 Cycle Time"
+FO8_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Ogive 8 Availability"
+WIPo_FO1_tt1:
+  type: float
+  default: 0.2155
+  min: 0.0
+  max: 1.0775
+  label: "Final Ogive 1 to Ultrasonic"
+WIPo_FO2_tt1:
+  type: float
+  default: 0.2155
+  min: 0.0
+  max: 1.0775
+  label: "Final Ogive 2 to Ultrasonic"
+WIPo_FO3_tt1:
+  type: float
+  default: 0.2155
+  min: 0.0
+  max: 1.0775
+  label: "Final Ogive 3 to Ultrasonic"
+WIPo_FO4_tt1:
+  type: float
+  default: 0.2155
+  min: 0.0
+  max: 1.0775
+  label: "Final Ogive 4 to Ultrasonic"
+WIPo_FO5_tt1:
+  type: float
+  default: 0.2155
+  min: 0.0
+  max: 1.0775
+  label: "Final Ogive 5 to Ultrasonic"
+WIPo_FO6_tt1:
+  type: float
+  default: 0.2155
+  min: 0.0
+  max: 1.0775
+  label: "Final Ogive 6 to Ultrasonic"
+WIPo_FO7_tt1:
+  type: float
+  default: 0.2155
+  min: 0.0
+  max: 1.0775
+  label: "Final Ogive 7 to Ultrasonic"
+WIPo_FO8_tt1:
+  type: float
+  default: 0.2155
+  min: 0.0
+  max: 1.0775
+  label: "Final Ogive 8 to Ultrasonic"
+# WIPi_UT_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_UT_tt2:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+UT1_process_time:
+  type: float
+  default: 1.44
+  min: 0.0
+  max: 7.2
+  label: "Ultrasonic 1 Cycle Time"
+UT1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Ultrasonic 1 Availability"
+UT2_process_time:
+  type: float
+  default: 1.44
+  min: 0.0
+  max: 7.2
+  label: "Ultrasonic 2 Cycle Time"
+UT2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Ultrasonic 2 Availability"
+WIPo_UT_tt1:
+  type: float
+  default: 0.6504
+  min: 0.0
+  max: 3.252
+  label: "Ultrasonic to Roller Stamping"
+# WIPi_SR_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+SR1_process_time:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Roller Stamping 1 Cycle Time"
+SR1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Roller Stamping 1 Availability"
+SR2_process_time:
+  type: float
+  default: 1
+  min: 0.0
+  max: 5.0
+  label: "Roller Stamping 2 Cycle Time"
+SR2_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Roller Stamping 2 Availability"
+WIPo_SR_tt1:
+  type: float
+  default: 0.8943
+  min: 0.0
+  max: 4.4715
+  label: "Roller Stamping to Drill Base"
+# WIPi_DB1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB5_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB6_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB7_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB8_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB9_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB10_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB11_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_DB12_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+DB1_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 1 Cycle Time"
+DB1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 1 Availability"
+DB2_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 2 Cycle Time"
+DB2_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 2 Availability"
+DB3_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 3 Cycle Time"
+DB3_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 3 Availability"
+DB4_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 4 Cycle Time"
+DB4_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 4 Availability"
+DB5_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 5 Cycle Time"
+DB5_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 5 Availability"
+DB6_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 6 Cycle Time"
+DB6_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 6 Availability"
+DB7_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 7 Cycle Time"
+DB7_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 7 Availability"
+DB8_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 8 Cycle Time"
+DB8_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 8 Availability"
+DB9_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 9 Cycle Time"
+DB9_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 9 Availability"
+DB10_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 10 Cycle Time"
+DB10_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 10 Availability"
+DB11_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 11 Cycle Time"
+DB11_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 11 Availability"
+DB12_process_time:
+  type: float
+  default: 15.18
+  min: 0.0
+  max: 75.9
+  label: "Drill Base 12 Cycle Time"
+DB12_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Drill Base 12 Availability"
+WIPo_DB1_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 1 to Knurling"
+WIPo_DB2_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 2 to Knurling"
+WIPo_DB3_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 3 to Knurling"
+WIPo_DB4_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 4 to Knurling"
+WIPo_DB5_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 5 to Knurling"
+WIPo_DB6_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 6 to Knurling"
+WIPo_DB7_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 7 to Knurling"
+WIPo_DB8_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 8 to Knurling"
+WIPo_DB9_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 9 to Knurling"
+WIPo_DB10_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 10 to Knurling"
+WIPo_DB11_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 11 to Knurling"
+WIPo_DB12_tt1:
+  type: float
+  default: 0.6775
+  min: 0.0
+  max: 3.3875
+  label: "Drill Base 12 to Knurling"
+# WIPi_KN_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+KN1_process_time:
+  type: float
+  default: 2.29
+  min: 0.0
+  max: 11.45
+  label: "Knurling 1 Cycle Time"
+KN1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Knurling 1 Availability"
+KN2_process_time:
+  type: float
+  default: 2.29
+  min: 0.0
+  max: 11.45
+  label: "Knurling 2 Cycle Time"
+KN2_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Knurling 2 Availability"
+KN3_process_time:
+  type: float
+  default: 2.29
+  min: 0.0
+  max: 11.45
+  label: "Knurling 3 Cycle Time"
+KN3_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Knurling 3 Availability"
+KN4_process_time:
+  type: float
+  default: 2.29
+  min: 0.0
+  max: 11.45
+  label: "Knurling 4 Cycle Time"
+KN4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Knurling 4 Availability"
+WIPo_KN_tt1:
+  type: float
+  default: 0.4065
+  min: 0.0
+  max: 2.0
+  label: "Knurling to Press on Driving Band 1"
+# WIPi_PDB1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+PDB1_process_time:
+  type: float
+  default: 4.92
+  min: 0.0
+  max: 24.6
+  label: "Press on Driving Band 1 Cycle Time"
+PDB1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Press on Driving Band 1 Availability"
+# PDB1_tt1:
+#   type: float
+#   default: 0.5691
+#   min: 0.0
+#   max: 2.8455000000000004
+#   label: ""
+WIPo_PDB1_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.8455000000000004
+  label: "Press on Driving Band 1 to Final Cavity"
+# WIPi_PDB2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+PDB2_process_time:
+  type: float
+  default: 4.92
+  min: 0.0
+  max: 24.6
+  label: "Press on Driving Band 2 Cycle Time"
+PDB2_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Press on Driving Band 2 Availability"
+# PDB2_tt1:
+#   type: float
+#   default: 0.5691
+#   min: 0.0
+#   max: 2.8455000000000004
+#   label: ""
+WIPo_PDB2_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.8455000000000004
+  label: "Press on Driving Band 2 to Final Cavity"
+# WIPi_PDB3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+PDB3_process_time:
+  type: float
+  default: 4.92
+  min: 0.0
+  max: 24.6
+  label: "Press on Driving Band 3 Cycle Time"
+PDB3_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Press on Driving Band 3 Availability"
+# PDB3_tt1:
+#   type: float
+#   default: 0.5691
+#   min: 0.0
+#   max: 2.8455000000000004
+#   label: ""
+WIPo_PDB3_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.8455000000000004
+  label: "Press on Driving Band 3 to Final Cavity"
+# WIPi_PDB4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+PDB4_process_time:
+  type: float
+  default: 4.92
+  min: 0.0
+  max: 24.6
+  label: "Press on Driving Band 4 Cycle Time"
+PDB4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Press on Driving Band 4 Availability"
+# PDB4_tt1:
+#   type: float
+#   default: 0.5691
+#   min: 0.0
+#   max: 2.8455000000000004
+#   label: ""
+WIPo_PDB4_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.8455000000000004
+  label: "Press on Driving Band 4 to Final Cavity"
+# WIPi_FC1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_FC2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_FC3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_FC4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_FC5_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+# WIPi_FC6_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+FC1_process_time:
+  type: float
+  default: 10.76
+  min: 0.0
+  max: 53.8
+  label: "Final Cavity 1 Cycle Time"
+FC1_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Cavity 1 Availability"
+FC2_process_time:
+  type: float
+  default: 10.76
+  min: 0.0
+  max: 53.8
+  label: "Final Cavity 2 Cycle Time"
+FC2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Cavity 2 Availability"
+FC3_process_time:
+  type: float
+  default: 10.76
+  min: 0.0
+  max: 53.8
+  label: "Final Cavity 3 Cycle Time"
+FC3_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Cavity 3 Availability"
+FC4_process_time:
+  type: float
+  default: 10.76
+  min: 0.0
+  max: 53.8
+  label: "Final Cavity 4 Cycle Time"
+FC4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Cavity 4 Availability"
+FC5_process_time:
+  type: float
+  default: 10.76
+  min: 0.0
+  max: 53.8
+  label: "Final Cavity 5 Cycle Time"
+FC5_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Final Cavity 5 Availability"
+FC6_process_time:
+  type: float
+  default: 10.76
+  min: 0.0
+  max: 53.8
+  label: "Final Cavity 6 Cycle Time"
+FC6_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Final Cavity 6 Availability"
+WIPo_FC1_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.8455
+  label: "Final Cavity 1 to Spooning"
+WIPo_FC2_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.8455
+  label: "Final Cavity 2 to Spooning"
+WIPo_FC3_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.845
+  label: "Final Cavity 3 to Spooning"
+WIPo_FC4_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.845
+  label: "Final Cavity 4 to Spooning"
+WIPo_FC5_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.845
+  label: "Final Cavity 5 to Spooning"
+WIPo_FC6_tt1:
+  type: float
+  default: 0.5691
+  min: 0.0
+  max: 2.845
+  label: "Final Cavity 6 to Spooning"
+# WIPi_SP1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+SP1_process_time:
+  type: float
+  default: 2.5667
+  min: 0.0
+  max: 12.8335
+  label: "Spooning 1 Cycle Time"
+SP1_OEE:
+  type: float
+  default: 0.85
+  min: 0.0
+  max: 1.0
+  label: "Spooning 1 Availability"
+WIPo_SP1_tt1:
+  type: float
+  default: 1.374
+  min: 0.0
+  max: 6.87
+  label: "Spooning 1 to WIP Area"
+# WIPi_SP2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+SP2_process_time:
+  type: float
+  default: 2.5667
+  min: 0.0
+  max: 12.8335
+  label: "Spooning 2 Cycle Time"
+SP2_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Spooning 2 Availability"
+WIPo_SP2_tt1:
+  type: float
+  default: 1.374
+  min: 0.0
+  max: 6.87
+  label: "Spooning 2 to WIP Area"
+finished_goods5_tt1:
+  type: float
+  default: 0
+  min: 0.0
+  max: 0.0
+  label: "WIP Area to Roller Grinding"
+# WIPi_RG_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt2:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt3:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt4:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt5:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt6:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt7:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt8:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt9:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt10:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt11:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_RG_tt12:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+RG1_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 1 Cycle Time"
+RG1_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 1 Availability"
+RG2_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 2 Cycle Time"
+RG2_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 2 Availability"
+RG3_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 3 Cycle Time"
+RG3_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 3 Availability"
+RG4_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 4 Cycle Time"
+RG4_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 4 Availability"
+RG5_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 5 Cycle Time"
+RG5_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 5 Availability"
+RG6_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 6 Cycle Time"
+RG6_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 6 Availability"
+RG7_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 7 Cycle Time"
+RG7_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 7 Availability"
+RG8_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 8 Cycle Time"
+RG8_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 8 Availability"
+RG9_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 9 Cycle Time"
+RG9_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 9 Availability"
+RG10_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 10 Cycle Time"
+RG10_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 10 Availability"
+RG11_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 11 Cycle Time"
+RG11_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 11 Availability"
+RG12_process_time:
+  type: float
+  default: 11.76
+  min: 0.0
+  max: 58.8
+  label: "Roller Grinding 12 Cycle Time"
+RG12_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Roller Grinding 12 Availability"
+WIPo_RG_tt1:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 1"
+WIPo_RG_tt2:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 2"
+WIPo_RG_tt3:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 3"
+WIPo_RG_tt4:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 4"
+WIPo_RG_tt5:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 5"
+WIPo_RG_tt6:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 6"
+WIPo_RG_tt7:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 7"
+WIPo_RG_tt8:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 8"
+WIPo_RG_tt9:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 9"
+WIPo_RG_tt10:
+  type: float
+  default: 1.3833
+  min: 0.0
+  max: 6.9165
+  label: "Roller Grind to Shot Blast Cavity 10"
+# WIPi_SB5_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB6_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB7_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB8_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB9_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB10_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB11_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB12_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB13_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_SB14_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+SB5_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 1 Cycle Time"
+SB5_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 1 Availability"
+SB6_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 2 Cycle Time"
+SB6_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 2 Availability"
+SB7_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 3 Cycle Time"
+SB7_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 3 Availability"
+SB8_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 4 Cycle Time"
+SB8_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 4 Availability"
+SB9_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 5 Cycle Time"
+SB9_OEE:
+  type: float
+  default: 0.97
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 5 Availability"
+SB10_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 6 Cycle Time"
+SB10_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 6 Availability"
+SB11_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 7 Cycle Time"
+SB11_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 7 Availability"
+SB12_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 8 Cycle Time"
+SB12_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 8 Availability"
+SB13_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 9 Cycle Time"
+SB13_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 9 Availability"
+SB14_process_time:
+  type: float
+  default: 2.35
+  min: 0.0
+  max: 11.75
+  label: "Shot Blast Cavity 10 Cycle Time"
+SB14_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Shot Blast Cavity 10 Availability"
+WIPo_SB5_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 1 to Final Nose Thread 1"
+WIPo_SB5_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 1 to Final Nose Thread 2"
+WIPo_SB5_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 1 to Final Nose Thread 3"
+WIPo_SB5_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 1 to Final Nose Thread 4"
+WIPo_SB5_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 1 to Final Nose Thread 5"
+WIPo_SB5_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 1 to Final Nose Thread 6"
+WIPo_SB6_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 2 to Final Nose Thread 1"
+WIPo_SB6_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 2 to Final Nose Thread 2"
+WIPo_SB6_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 2 to Final Nose Thread 3"
+WIPo_SB6_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 2 to Final Nose Thread 4"
+WIPo_SB6_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 2 to Final Nose Thread 5"
+WIPo_SB6_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 2 to Final Nose Thread 6"
+WIPo_SB7_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 3 to Final Nose Thread 1"
+WIPo_SB7_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 3 to Final Nose Thread 2"
+WIPo_SB7_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 3 to Final Nose Thread 3"
+WIPo_SB7_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 3 to Final Nose Thread 4"
+WIPo_SB7_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 3 to Final Nose Thread 5"
+WIPo_SB7_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 3 to Final Nose Thread 6"
+WIPo_SB8_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 4 to Final Nose Thread 1"
+WIPo_SB8_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 4 to Final Nose Thread 2"
+WIPo_SB8_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 4 to Final Nose Thread 3"
+WIPo_SB8_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 4 to Final Nose Thread 4"
+WIPo_SB8_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 4 to Final Nose Thread 5"
+WIPo_SB8_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 4 to Final Nose Thread 6"
+WIPo_SB9_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 5 to Final Nose Thread 1"
+WIPo_SB9_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 5 to Final Nose Thread 2"
+WIPo_SB9_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 5 to Final Nose Thread 3"
+WIPo_SB9_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 5 to Final Nose Thread 4"
+WIPo_SB9_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 5 to Final Nose Thread 5"
+WIPo_SB9_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 5 to Final Nose Thread 6"
+WIPo_SB10_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 6 to Final Nose Thread 1"
+WIPo_SB10_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 6 to Final Nose Thread 2"
+WIPo_SB10_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 6 to Final Nose Thread 3"
+WIPo_SB10_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 6 to Final Nose Thread 4"
+WIPo_SB10_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 6 to Final Nose Thread 5"
+WIPo_SB10_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 6 to Final Nose Thread 6"
+WIPo_SB11_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 7 to Final Nose Thread 1"
+WIPo_SB11_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 7 to Final Nose Thread 2"
+WIPo_SB11_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 7 to Final Nose Thread 3"
+WIPo_SB11_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 7 to Final Nose Thread 4"
+WIPo_SB11_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 7 to Final Nose Thread 5"
+WIPo_SB11_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 7 to Final Nose Thread 6"
+WIPo_SB12_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 8 to Final Nose Thread 1"
+WIPo_SB12_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 8 to Final Nose Thread 2"
+WIPo_SB12_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 8 to Final Nose Thread 3"
+WIPo_SB12_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 8 to Final Nose Thread 4"
+WIPo_SB12_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 8 to Final Nose Thread 5"
+WIPo_SB12_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 8 to Final Nose Thread 6"
+WIPo_SB13_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 9 to Final Nose Thread 1"
+WIPo_SB13_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 9 to Final Nose Thread 2"
+WIPo_SB13_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 9 to Final Nose Thread 3"
+WIPo_SB13_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 9 to Final Nose Thread 4"
+WIPo_SB13_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 9 to Final Nose Thread 5"
+WIPo_SB13_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 9 to Final Nose Thread 6"
+WIPo_SB14_tt1:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 10 to Final Nose Thread 1"
+WIPo_SB14_tt2:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 10 to Final Nose Thread 2"
+WIPo_SB14_tt3:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 10 to Final Nose Thread 3"
+WIPo_SB14_tt4:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 10 to Final Nose Thread 4"
+WIPo_SB14_tt5:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 10 to Final Nose Thread 5"
+WIPo_SB14_tt6:
+  type: float
+  default: 1.813
+  min: 0.0
+  max: 9.065
+  label: "Shot Blast Cavity 10 to Final Nose Thread 6"
+# WIPi_NT1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_NT2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_NT3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_NT4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_NT5_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_NT6_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+NT1_process_time:
+  type: float
+  default: 10.53
+  min: 0.0
+  max: 52.65
+  label: "Final Nose Thread 1 Cycle Time"
+NT1_OEE:
+  type: float
+  default: 0.924
+  min: 0.0
+  max: 1.0
+  label: "Final Nose Thread 1 Availability"
+NT2_process_time:
+  type: float
+  default: 10.53
+  min: 0.0
+  max: 52.65
+  label: "Final Nose Thread 2 Cycle Time"
+NT2_OEE:
+  type: float
+  default: 0.924
+  min: 0.0
+  max: 1.0
+  label: "Final Nose Thread 2 Availability"
+NT3_process_time:
+  type: float
+  default: 10.53
+  min: 0.0
+  max: 52.65
+  label: "Final Nose Thread 3 Cycle Time"
+NT3_OEE:
+  type: float
+  default: 0.924
+  min: 0.0
+  max: 1.0
+  label: "Final Nose Thread 3 Availability"
+NT4_process_time:
+  type: float
+  default: 10.53
+  min: 0.0
+  max: 52.65
+  label: "Final Nose Thread 4 Cycle Time"
+NT4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Nose Thread 4 Availability"
+NT5_process_time:
+  type: float
+  default: 10.53
+  min: 0.0
+  max: 52.65
+  label: "Final Nose Thread 5 Cycle Time"
+NT5_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Nose Thread 5 Availability"
+NT6_process_time:
+  type: float
+  default: 10.53
+  min: 0.0
+  max: 52.65
+  label: "Final Nose Thread 6 Cycle Time"
+NT6_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Nose Thread 6 Availability"
+WIPo_NT1_tt1:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 1 to Final Driving Band & Base Thread 1"
+WIPo_NT1_tt2:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 1 to Final Driving Band & Base Thread 2"
+WIPo_NT1_tt3:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 1 to Final Driving Band & Base Thread 3"
+WIPo_NT1_tt4:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 1 to Final Driving Band & Base Thread 4"
+WIPo_NT1_tt5:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 1 to Final Driving Band & Base Thread 5"
+WIPo_NT1_tt6:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 1 to Final Driving Band & Base Thread 6"
+WIPo_NT2_tt1:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 2 to Final Driving Band & Base Thread 1"
+WIPo_NT2_tt2:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 2 to Final Driving Band & Base Thread 2"
+WIPo_NT2_tt3:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 2 to Final Driving Band & Base Thread 3"
+WIPo_NT2_tt4:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 2 to Final Driving Band & Base Thread 4"
+WIPo_NT2_tt5:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 2 to Final Driving Band & Base Thread 5"
+WIPo_NT2_tt6:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 2 to Final Driving Band & Base Thread 6"
+WIPo_NT3_tt1:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 3 to Final Driving Band & Base Thread 1"
+WIPo_NT3_tt2:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 3 to Final Driving Band & Base Thread 2"
+WIPo_NT3_tt3:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 3 to Final Driving Band & Base Thread 3"
+WIPo_NT3_tt4:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 3 to Final Driving Band & Base Thread 4"
+WIPo_NT3_tt5:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 3 to Final Driving Band & Base Thread 5"
+WIPo_NT3_tt6:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 3 to Final Driving Band & Base Thread 6"
+WIPo_NT4_tt1:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 4 to Final Driving Band & Base Thread 1"
+WIPo_NT4_tt2:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 4 to Final Driving Band & Base Thread 2"
+WIPo_NT4_tt3:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 4 to Final Driving Band & Base Thread 3"
+WIPo_NT4_tt4:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 4 to Final Driving Band & Base Thread 4"
+WIPo_NT4_tt5:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 4 to Final Driving Band & Base Thread 5"
+WIPo_NT4_tt6:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 4 to Final Driving Band & Base Thread 6"
+WIPo_NT5_tt1:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 5 to Final Driving Band & Base Thread 1"
+WIPo_NT5_tt2:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 5 to Final Driving Band & Base Thread 2"
+WIPo_NT5_tt3:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 5 to Final Driving Band & Base Thread 3"
+WIPo_NT5_tt4:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 5 to Final Driving Band & Base Thread 4"
+WIPo_NT5_tt5:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 5 to Final Driving Band & Base Thread 5"
+WIPo_NT5_tt6:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 5 to Final Driving Band & Base Thread 6"
+WIPo_NT6_tt1:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 6 to Final Driving Band & Base Thread 1"
+WIPo_NT6_tt2:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 6 to Final Driving Band & Base Thread 2"
+WIPo_NT6_tt3:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 6 to Final Driving Band & Base Thread 3"
+WIPo_NT6_tt4:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 6 to Final Driving Band & Base Thread 4"
+WIPo_NT6_tt5:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 6 to Final Driving Band & Base Thread 5"
+WIPo_NT6_tt6:
+  type: float
+  default: 2.1545
+  min: 0.0
+  max: 10.7725
+  label: "Final Nose Thread 6 to Final Driving Band & Base Thread 6"
+# WIPi_BT1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_BT2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_BT3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_BT4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_BT5_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_BT6_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+BT1_process_time:
+  type: float
+  default: 9.38
+  min: 0.0
+  max: 46.9
+  label: "Final Driving Band & Base Thread 1 Cycle Time"
+BT1_OEE:
+  type: float
+  default: 0.924
+  min: 0.0
+  max: 1.0
+  label: "Final Driving Band & Base Thread 1 Availability"
+BT2_process_time:
+  type: float
+  default: 9.38
+  min: 0.0
+  max: 46.9
+  label: "Final Driving Band & Base Thread 2 Cycle Time"
+BT2_OEE:
+  type: float
+  default: 0.924
+  min: 0.0
+  max: 1.0
+  label: "Final Driving Band & Base Thread 2 Availability"
+BT3_process_time:
+  type: float
+  default: 9.38
+  min: 0.0
+  max: 46.9
+  label: "Final Driving Band & Base Thread 3 Cycle Time"
+BT3_OEE:
+  type: float
+  default: 0.924
+  min: 0.0
+  max: 1.0
+  label: "Final Driving Band & Base Thread 3 Availability"
+BT4_process_time:
+  type: float
+  default: 9.38
+  min: 0.0
+  max: 46.90
+  label: "Final Driving Band & Base Thread 4 Cycle Time"
+BT4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Driving Band & Base Thread 4 Availability"
+BT5_process_time:
+  type: float
+  default: 9.38
+  min: 0.0
+  max: 46.9
+  label: "Final Driving Band & Base Thread 5 Cycle Time"
+BT5_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Driving Band & Base Thread 5 Availability"
+BT6_process_time:
+  type: float
+  default: 9.38
+  min: 0.0
+  max: 46.9
+  label: "Final Driving Band & Base Thread 6 Cycle Time"
+BT6_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Driving Band & Base Thread 6 Availability"
+WIPo_BT1_tt1:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 1 to MPI 1"
+WIPo_BT1_tt2:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 1 to MPI 2"
+WIPo_BT1_tt3:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 1 to MPI 3"
+WIPo_BT1_tt4:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 1 to MPI 4"
+WIPo_BT2_tt1:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 2 to MPI 1"
+WIPo_BT2_tt2:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 2 to MPI 2"
+WIPo_BT2_tt3:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 2 to MPI 3"
+WIPo_BT2_tt4:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 2 to MPI 4"
+WIPo_BT3_tt1:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 3 to MPI 1"
+WIPo_BT3_tt2:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 3 to MPI 2"
+WIPo_BT3_tt3:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 3 to MPI 3"
+WIPo_BT3_tt4:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 3 to MPI 4"
+WIPo_BT4_tt1:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 4 to MPI 1"
+WIPo_BT4_tt2:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 4 to MPI 2"
+WIPo_BT4_tt3:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 4 to MPI 3"
+WIPo_BT4_tt4:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 4 to MPI 4"
+WIPo_BT5_tt1:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 5 to MPI 1"
+WIPo_BT5_tt2:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 5 to MPI 2"
+WIPo_BT5_tt3:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 5 to MPI 3"
+WIPo_BT5_tt4:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 5 to MPI 4"
+WIPo_BT6_tt1:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 6 to MPI 1"
+WIPo_BT6_tt2:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 6 to MPI 2"
+WIPo_BT6_tt3:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 6 to MPI 3"
+WIPo_BT6_tt4:
+  type: float
+  default: 2.561
+  min: 0.0
+  max: 12.805
+  label: "Final Driving Band & Base Thread 6 to MPI 4"
+# WIPi_MP1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_MP2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_MP3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_MP4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+MP1_process_time:
+  type: float
+  default: 3.51
+  min: 0.0
+  max: 17.549
+  label: "MPI 1 Cycle Time"
+MP1_OEE:
+  type: float
+  default: 1
+  min: 0.0
+  max: 1.0
+  label: "MPI 1 Availability"
+MP2_process_time:
+  type: float
+  default: 3.51
+  min: 0.0
+  max: 17.549
+  label: "MPI 2 Cycle Time"
+MP2_OEE:
+  type: float
+  default: 1
+  min: 0.0
+  max: 1.0
+  label: "MPI 2 Availability"
+MP3_process_time:
+  type: float
+  default: 3.51
+  min: 0.0
+  max: 17.549
+  label: "MPI 3 Cycle Time"
+MP3_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "MPI 3 Availability"
+MP4_process_time:
+  type: float
+  default: 3.51
+  min: 0.0
+  max: 17.549
+  label: "MPI 4 Cycle Time"
+MP4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "MPI 4 Availability"
+WIPo_MP1_tt1:
+  type: float
+  default: 1.4228
+  min: 0.0
+  max: 7.114
+  label: "MPI 1 to Final Balancing"
+WIPo_MP2_tt1:
+  type: float
+  default: 1.4228
+  min: 0.0
+  max: 7.114
+  label: "MPI 2 to Final Balancing"
+WIPo_MP3_tt1:
+  type: float
+  default: 1.4228
+  min: 0.0
+  max: 7.114
+  label: "MPI 3 to Final Balancing"
+WIPo_MP4_tt1:
+  type: float
+  default: 1.4228
+  min: 0.0
+  max: 7.114
+  label: "MPI 4 to Final Balancing"
+FB1_process_time:
+  type: float
+  default: 5.5
+  min: 0.0
+  max: 27.5
+  label: "Final Balancing 1 Cycle Time"
+FB1_OEE:
+  type: float
+  default: 1
+  min: 0.0
+  max: 1.0
+  label: "Final Balancing 1 Availability"
+FB2_process_time:
+  type: float
+  default: 5.5
+  min: 0.0
+  max: 27.5
+  label: "Final Balancing 2 Cycle Time"
+FB2_OEE:
+  type: float
+  default: 1
+  min: 0.0
+  max: 1.0
+  label: "Final Balancing 2 Availability"
+FB3_process_time:
+  type: float
+  default: 5.5
+  min: 0.0
+  max: 27.5
+  label: "Final Balancing 3 Cycle Time"
+FB3_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Balancing 3 Availability"
+FB4_process_time:
+  type: float
+  default: 5.5
+  min: 0.0
+  max: 27.5
+  label: "Final Balancing 4 Cycle Time"
+FB4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Balancing 4 Availability"
+WIPo_FB1_tt1:
+  type: float
+  default: 0
+  min: 0.0
+  max: 0.0
+  label: "Final Balancing 1 to Final Inspection"
+WIPo_FB2_tt1:
+  type: float
+  default: 0
+  min: 0.0
+  max: 0.0
+  label: "Final Balancing 2 to Final Inspection"
+WIPo_FB3_tt1:
+  type: float
+  default: 0
+  min: 0.0
+  max: 0.0
+  label: "Final Balancing 3 to Final Inspection"
+WIPo_FB4_tt1:
+  type: float
+  default: 0
+  min: 0.0
+  max: 0.0
+  label: "Final Balancing 4 to Final Inspection"
+# WIPi_FI_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FI_tt2:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FI_tt3:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_FI_tt4:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+FI1_process_time:
+  type: float
+  default: 4.65
+  min: 0.0
+  max: 23.25
+  label: "Final Inspection 1 Cycle Time"
+FI1_OEE:
+  type: float
+  default: 1
+  min: 0.0
+  max: 1.0
+  label: "Final Inspection 1 Availability"
+FI2_process_time:
+  type: float
+  default: 4.65
+  min: 0.0
+  max: 23.25
+  label: "Final Inspection 2 Cycle Time"
+FI2_OEE:
+  type: float
+  default: 1
+  min: 0.0
+  max: 1.0
+  label: "Final Inspection 2 Availability"
+FI3_process_time:
+  type: float
+  default: 4.65
+  min: 0.0
+  max: 23.25
+  label: "Final Inspection 3 Cycle Time"
+FI3_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Inspection 3 Availability"
+FI4_process_time:
+  type: float
+  default: 4.65
+  min: 0.0
+  max: 23.25
+  label: "Final Inspection 4 Cycle Time"
+FI4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Final Inspection 4 Availability"
+WIPo_FI1_tt1:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 1 to Dip & Pack 1"
+WIPo_FI1_tt2:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 1 to Dip & Pack 2"
+WIPo_FI1_tt3:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 1 to Dip & Pack 3"
+WIPo_FI1_tt4:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 1 to Dip & Pack 4"
+WIPo_FI2_tt1:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 2 to Dip & Pack 1"
+WIPo_FI2_tt2:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 2 to Dip & Pack 2"
+WIPo_FI2_tt3:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 2 to Dip & Pack 3"
+WIPo_FI2_tt4:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 2 to Dip & Pack 4"
+WIPo_FI3_tt1:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 3 to Dip & Pack 1"
+WIPo_FI3_tt2:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 3 to Dip & Pack 2"
+WIPo_FI3_tt3:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 3 to Dip & Pack 3"
+WIPo_FI3_tt4:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 3 to Dip & Pack 4"
+WIPo_FI4_tt1:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 4 to Dip & Pack 1"
+WIPo_FI4_tt2:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 4 to Dip & Pack 2"
+WIPo_FI4_tt3:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 4 to Dip & Pack 3"
+WIPo_FI4_tt4:
+  type: float
+  default: 1.2927
+  min: 0.0
+  max: 6.4635
+  label: "Final Inspection 4 to Dip & Pack 4"
+# WIPi_D&P1_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_D&P2_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_D&P3_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+# WIPi_D&P4_tt1:
+#   type: float
+#   default: 0
+#   min: 0.0
+#   max: 0.0
+#   label: ""
+D&P1_process_time:
+  type: float
+  default: 15
+  min: 0.0
+  max: 75.0
+  label: "Dip & Pack 1 Cycle Time"
+D&P1_OEE:
+  type: float
+  default: 1
+  min: 0.0
+  max: 1.0
+  label: "Dip & Pack 1 Availability"
+D&P2_process_time:
+  type: float
+  default: 15
+  min: 0.0
+  max: 75.0
+  label: "Dip & Pack 2 Cycle Time"
+D&P2_OEE:
+  type: float
+  default: 1
+  min: 0.0
+  max: 1.0
+  label: "Dip & Pack 2 Availability"
+D&P3_process_time:
+  type: float
+  default: 15
+  min: 0.0
+  max: 75.0
+  label: "Dip & Pack 3 Cycle Time"
+D&P3_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Dip & Pack 3 Availability"
+D&P4_process_time:
+  type: float
+  default: 15
+  min: 0.0
+  max: 75.0
+  label: "Dip & Pack 4 Cycle Time"
+D&P4_OEE:
+  type: float
+  default: 0
+  min: 0.0
+  max: 1.0
+  label: "Dip & Pack 4 Availability"
+WIPo_D&P1_tt1:
+  type: float
+  default: 1.5
+  min: 0.0
+  max: 7.5
+  label: "Dip & Pack 1 to Dispatch"
+WIPo_D&P2_tt1:
+  type: float
+  default: 1.5
+  min: 0.0
+  max: 7.5
+  label: "Dip & Pack 2 to Dispatch"
+WIPo_D&P3_tt1:
+  type: float
+  default: 1.5
+  min: 0.0
+  max: 7.5
+  label: "Dip & Pack 3 to Dispatch"
+WIPo_D&P4_tt1:
+  type: float
+  default: 1.5
+  min: 0.0
+  max: 7.5
+  label: "Dip & Pack 4 to Dispatch"
