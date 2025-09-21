@@ -5,7 +5,7 @@ import pandas as pd
 import numpy as np   
 from typing import Optional 
 
-PRINT_MOVES = False
+PRINT_MOVES = True 
 
 # ---- globally shared collectors / utils ---------------------------
 global_item_counter = 0
@@ -51,26 +51,6 @@ def log_move(env, uid, src, dest, action):
     })
     if PRINT_MOVES:
         print(f"[{env.now:6.1f}] {uid:>6}  {action:<8}  {src:>22} → {dest}")
-
-# --------------------------------------------------------------------
-# def downtime(env, machine, OEE, mttf=50.0):
-#     """
-#     Toggle machine_status on/off so long-run availability ≈ OEE.
-#     Records timestamped up/down events in status_history.
-#     """
-#     mttr = mttf * (1 - OEE) / OEE
-#     # start up
-#     machine_status[machine] = True
-#     status_history[machine].append((env.now, True))
-#     while True:
-#         # up-time
-#         yield env.timeout(random.expovariate(1 / mttf))
-#         machine_status[machine] = False
-#         status_history[machine].append((env.now, False))
-#         # down-time
-#         yield env.timeout(random.expovariate(1 / mttr))
-#         machine_status[machine] = True
-#         status_history[machine].append((env.now, True))
 
 downtime_log = {}
 

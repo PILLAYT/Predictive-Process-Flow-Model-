@@ -1,6 +1,13 @@
 # config.py ----------------------------------------------------------
-SIM_TIME =     10000
+SIM_TIME =     100
 INTERARRIVAL = 0
+
+# --- Run-mode controls ---
+RUN_MODE = "time"          # "time" or "units" (you can also pass "auto" later if you want)
+DESIRED_UNITS = 1      # e.g., 600. None/0 disables units targeting.
+MAX_TIME = 8 * 60          # minutes, safety cap when RUN_MODE="units"
+WARMUP_ESTIMATE = 30       # minutes, expected time to first Stage6 unit (for progress)
+PROGRESS_WARMUP_FRACTION = 0.25  # 25% of the bar reserved for warm-up phase
 
 # DICTIONARIES 
 

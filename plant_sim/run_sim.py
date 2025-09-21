@@ -54,23 +54,34 @@ def run_sim(config: dict = None, progress_callback=None):
     wc_reject = config.get("WC_REJECT_INTERVAL", cfg.WC_REJECT_INTERVAL)
     tt_fail   = config.get("TT_FAIL_INTERVAL", cfg.TT_FAIL_INTERVAL)
     
+    # NEW: run-mode + progress settings
+    run_mode    = str(config.get("RUN_MODE", getattr(cfg, "RUN_MODE", "time"))).lower()
+    desired_units = config.get("DESIRED_UNITS", getattr(cfg, "DESIRED_UNITS", None))
+    max_time      = config.get("MAX_TIME", getattr(cfg, "MAX_TIME", sim_time))
+    warmup_est    = config.get("WARMUP_ESTIMATE", getattr(cfg, "WARMUP_ESTIMATE", 30))
+    warmup_frac   = config.get("PROGRESS_WARMUP_FRACTION", getattr(cfg, "PROGRESS_WARMUP_FRACTION", 0.25))
+
+    # Basic validation (fail fast, clear)
+    if run_mode not in ("time", "units", "auto"):
+        raise ValueError("RUN_MODE must be 'time', 'units', or 'auto'.")
+
+    if run_mode == "time":
+        if not sim_time or sim_time <= 0:
+            raise ValueError("RUN_MODE='time' requires SIM_TIME > 0.")
+    elif run_mode == "units":
+        if not desired_units or desired_units <= 0:
+            raise ValueError("RUN_MODE='units' requires DESIRED_UNITS > 0.")
+        if not max_time or max_time <= 0:
+            raise ValueError("RUN_MODE='units' requires MAX_TIME > 0 (safety cap).")
+    else:  # "auto"
+        if (not sim_time or sim_time <= 0) and (not desired_units or desired_units <= 0):
+            raise ValueError("RUN_MODE='auto' needs at least SIM_TIME>0 or DESIRED_UNITS>0.")
+    
 #     helpers.forklifts = simpy.Resource(env, capacity=Forklift_Capacity)
     helpers.forklifts = simpy.Resource(env, capacity=forklift_cap)
     
     busy_time = { m: 0.0 for m in cfg.MACHINE_LIST } #PART OF STAGE5 INVESTIGATION
     
-    #OEE DIAGNOSTIC 
-#     def sentinel(env, name="NIH2"):
-#         last_state = None
-#         while True:
-#             # look at the last recorded event for this machine
-#             events = helpers.status_history.get(name, [])
-#             if events:
-#                 last_state = events[-1][1]  # True = up, False = down
-#             print(f"[SENTINEL {env.now:.1f}] {name} up? {last_state}")
-#             yield env.timeout(50)       # print every 500 min
-
-#     env.process(sentinel(env))
 
     # initialize queues
 
@@ -99,11 +110,6 @@ def run_sim(config: dict = None, progress_callback=None):
     queues['finished_goods5']     = finished_goods5 
     queues['finished_goods6']     = finished_goods6
 
-
-#     for name, props in cfg.network.items():
-#         if "process_time" in props and "OEE" in props:
-#             machine_status[name] = True
-#             env.process(downtime(env, name, props['OEE']))
 
     for name, props in cfg.network.items():
         if "process_time" in props and "OEE" in props:
@@ -187,49 +193,127 @@ def run_sim(config: dict = None, progress_callback=None):
         if progress_callback:
             progress_callback(env.now / sim_time)
 
-    # ─── run the simulation with progress reporting ──────────
+
+#     # ─── run the simulation (with optional progress reporting) ─────────
 #     if progress_callback:
-#         orig_step = env.step
+#         orig_step   = env.step       # keep a reference to the real step()
+
 #         def step_and_report(*args, **kwargs):
-#             result = orig_step(*args, **kwargs)
-#             progress_callback(env.now / sim_time)
+#             """Wrap env.step so we can ping the UI every time the clock moves."""
+#             result = orig_step(*args, **kwargs)          # advance sim
+#             if sim_time:                                # guard against /0
+#                 progress_callback(env.now / sim_time)   # 0 → 1
 #             return result
-#         env.step = step_and_report
 
-#     env.run(until=sim_time)
+#         env.step = step_and_report                      # monkey-patch only for this run
 
-#     # right before env.run(...)
-#     if progress_callback:
-#         next_report = sim_time * 0.05  # every 5%
-#         orig_step    = env.step
+#     env.run(until=sim_time)                             # ← single official run call
 
-#         def step_and_report(*args, **kwargs):
-#             res = orig_step(*args, **kwargs)
-#             now = env.now
-#             nonlocal next_report
-#             if now >= next_report:
-#                 progress_callback(now / sim_time)
-#                 next_report += sim_time * 0.05
-#             return res
+    # ─── progress model (time vs two-phase units) ──────────────────────────────
+    use_units_progress = (run_mode == "units") or (run_mode == "auto" and desired_units and desired_units > 0)
 
-#         env.step = step_and_report
-        
-#     env.run(until=sim_time)
-
-    # ─── run the simulation (with optional progress reporting) ─────────
     if progress_callback:
-        orig_step   = env.step       # keep a reference to the real step()
+        orig_step = env.step
 
         def step_and_report(*args, **kwargs):
-            """Wrap env.step so we can ping the UI every time the clock moves."""
-            result = orig_step(*args, **kwargs)          # advance sim
-            if sim_time:                                # guard against /0
-                progress_callback(env.now / sim_time)   # 0 → 1
-            return result
+            res = orig_step(*args, **kwargs)
 
-        env.step = step_and_report                      # monkey-patch only for this run
+            # compute progress per mode
+            prog = 0.0
+            if use_units_progress and desired_units and desired_units > 0:
+                elapsed = env.now
+                produced = len(finished_goods6)
 
-    env.run(until=sim_time)                             # ← single official run call
+                if produced <= 0:
+                    # warm-up segment (0 → warmup_frac)
+                    if warmup_est and warmup_est > 0:
+                        prog = min(elapsed / float(warmup_est), 1.0) * float(warmup_frac)
+                    else:
+                        prog = 0.0
+                else:
+                    # main segment (warmup_frac → 1.0)
+                    unit_frac = min(float(produced) / float(desired_units), 1.0)
+                    prog = float(warmup_frac) + (1.0 - float(warmup_frac)) * unit_frac
+            else:
+                # time mode (or auto without units target)
+                if sim_time and sim_time > 0:
+                    prog = min(env.now / float(sim_time), 1.0)
+                else:
+                    prog = 0.0
+
+            if prog < 0.0: prog = 0.0
+            if prog > 1.0: prog = 1.0
+            try:
+                progress_callback(prog)
+            except Exception:
+                pass  # keep the sim running even if UI callback fails
+
+            return res
+
+        env.step = step_and_report
+
+    # ─── stop policy (time, units, or auto) ───────────────────────────────────
+    stop_reason = "unknown"
+
+    if run_mode == "time":
+        end_evt = env.timeout(sim_time)
+        env.run(until=end_evt)
+        stop_reason = "time_cap"
+
+    elif run_mode == "units":
+        # target watcher
+        units_evt = env.event()
+        def _goal_watcher(e):
+            while len(finished_goods6) < desired_units:
+                yield e.timeout(1)
+            if not units_evt.triggered:
+                units_evt.succeed()
+        env.process(_goal_watcher(env))
+
+        time_cap_evt = env.timeout(max_time)
+        combined = simpy.events.AnyOf(env, [units_evt, time_cap_evt])
+        env.run(until=combined)
+        # which one fired?
+        stop_reason = "units_target" if units_evt in combined.value else "safety_cap"
+
+    else:  # run_mode == "auto"
+        events = []
+        units_evt = None
+        time_cap_evt = None
+
+        if desired_units and desired_units > 0:
+            units_evt = env.event()
+            def _goal_watcher(e):
+                while len(finished_goods6) < desired_units:
+                    yield e.timeout(1)
+                if not units_evt.triggered:
+                    units_evt.succeed()
+            env.process(_goal_watcher(env))
+            events.append(units_evt)
+
+        if sim_time and sim_time > 0:
+            time_cap_evt = env.timeout(sim_time)
+            events.append(time_cap_evt)
+
+        if len(events) == 1:
+            env.run(until=events[0])
+            stop_reason = "units_target" if units_evt and events[0] is units_evt else "time_cap"
+        else:
+            combined = simpy.events.AnyOf(env, events)
+            env.run(until=combined)
+            if units_evt and (units_evt in combined.value):
+                stop_reason = "units_target"
+            elif time_cap_evt and (time_cap_evt in combined.value):
+                stop_reason = "time_cap"
+            else:
+                stop_reason = "unknown"
+                
+                
+    # after the run completes
+    actual_elapsed = env.now
+    produced_units = len(finished_goods6)
+    throughput_rph = (produced_units / (actual_elapsed / 60.0)) if actual_elapsed > 0 else None
+
 
     # ─── collect ending WIP counts ─────────────────────
     final_wip = {}
@@ -259,28 +343,6 @@ def run_sim(config: dict = None, progress_callback=None):
         for uid, rec in unit_record.items()
     ])
     
-#     # Replace these names with your real df_units column names that should be floats:
-#     float_cols = [
-#         'Cooling',
-#         'Stage1Storage',
-#         'Stage2Storage',
-#         'Stage3Storage',
-#         'Stage4Storage',
-#         'Stage5Storage',
-#         'Stage6Storage'
-#     ]
-
-#     for c in float_cols:
-#         # 1) Cast the column to string (in case any stray non‐string data sneaked in),
-#         # 2) remove any commas/spaces if present (e.g. "1,234.56" → "1234.56"),
-#         # 3) use pd.to_numeric to coerce to float—invalid parsing becomes NaN if something can't convert.
-#         df_units[c] = pd.to_numeric(
-#             df_units[c]
-#                 .astype(str)
-#                 .str.replace(',', '')    # remove any thousands‐separator commas
-#                 .str.replace(' ', ''),   # remove any stray spaces
-#             errors='coerce'
-#         )
 
     # ─── safely coerce numeric columns only if they exist ─────────
     desired = [
@@ -327,74 +389,15 @@ def run_sim(config: dict = None, progress_callback=None):
     print("--- Finished stage 5 count:",      len(finished_goods5))   # <─ new line
     print("--- Finished stage 6 count:", len(finished_goods6))   # ← add this
 
-#     # ─── Stage-4 machine uptimes ───────────────────────
-#     print("\n--- Stage 4 machine uptimes ---")
-#     for machine in (
-#         "PO1","PO2","PO3",
-#         "HT","SPHDT","HDT",
-#         "CUT1","CUT2","CUT3","CUT4",
-#         "MTT","TT","HS"
-#     ):
-#         events = status_history.get(machine, [])
-#         if len(events) < 2:
-#             print(f"{machine:>5}: no downtime data")
-#             continue
-
-#         uptime = sum(
-#             (t2 - t1)
-#             for (t1, was_up), (t2, now_up) in zip(events, events[1:])
-#             if was_up
-#         )
-#         util = uptime / env.now
-#         print(f"{machine:>5}: {util:.0%} uptime")
-        
-    # ─── build machine-utilisation table ─────────────────────────────
-#     df_move_std = (
-#         df_move
-#             .rename(columns=str.lower)           # Time→time, From→from, …
-#             .rename(columns={"action": "event"})  # Action→event
-#     )
-#     df_util = build_utilisation_df(df_move_std, cfg.SIM_TIME)
-
-#     # ─── build machine‐utilisation table safely ───────────────────
-#     df_move_std = df_move.copy()
-#     # only lowercase & rename if 'action' exists
-#     if "action" in df_move_std.columns:
-#         df_move_std = (
-#             df_move_std
-#               .rename(columns=str.lower)          # Time→time, From→from, …
-#               .rename(columns={"action": "event"})# Action→event
-#         )
-#     else:
-#         # ensure we have the right columns to avoid KeyErrors
-# #         df_move_std["machine"] = []
-# #         df_move_std["event"]   = []
-# #         df_move_std["time"]    = []
-
-#         df_move_std["machine"] = pd.NA
-#         df_move_std["event"]   = pd.NA
-#         df_move_std["time"]    = pd.NA
-
-#     # only build utilisation if we have events logged
-#     if "event" in df_move_std.columns and not df_move_std.empty:
-#         # use sim_time (overrides) rather than raw cfg.SIM_TIME
-#         df_util = build_utilisation_df(df_move_std, sim_time)
-#     else:
-#         # return an empty utilisation DataFrame with expected schema
-#         df_util = pd.DataFrame(
-#             columns=["machine", "busy_time", "available", "utilisation"]
-#         )
-
-#     # quick peek (comment out if you don’t want the noise)
-#     print("\n--- Machine Utilisation (head) ---")
-#     print(df_util.head())
 
     # ─── build machine‐utilisation table ─────────────────────────────
-    df_move_std = pd.DataFrame(movement_log).sort_values("Time").reset_index(drop=True)
-    df_util      = build_utilisation_df(df_move_std, sim_time)
+    df_move_std = pd.DataFrame(movement_log)
+    if "Time" in df_move_std.columns:
+        df_move_std = df_move_std.sort_values("Time").reset_index(drop=True)
+    df_util = build_utilisation_df(df_move_std, actual_elapsed)
+    
     # ── Ensure every enabled machine (OEE>0) appears, even if idle ─────────────
     enabled = [m for m, props in cfg.network.items() if props.get("OEE", 0) > 0]
-
     present  = set(df_util["machine"])
     missing  = [m for m in enabled if m not in present]
 
@@ -406,7 +409,7 @@ def run_sim(config: dict = None, progress_callback=None):
                     {
                         "machine":     missing,
                         "busy_time":   0.0,
-                        "available":   sim_time,   # whole window was available
+                        "available":   actual_elapsed,   # use actual elapsed
                         "utilisation": 0.0,
                     }
                 ),
@@ -415,6 +418,26 @@ def run_sim(config: dict = None, progress_callback=None):
         )
 
     # ─── return all outputs ──────────────────────────────────────────
+    
+    run_meta = {
+        "mode": run_mode,
+        "targets": {
+            "sim_time": sim_time,
+            "desired_units": desired_units,
+            "max_time": max_time,
+            "warmup_estimate": warmup_est,
+            "warmup_fraction": warmup_frac,
+        },
+        "progress_model": "two_phase_units" if use_units_progress else "time_fraction",
+        "stop_reason": stop_reason,
+        "elapsed_time": actual_elapsed,               # total elapsed
+        "first_stage6_time": first_stage6_time,       # when the first unit hit Stage-6 (sim minutes)
+        "elapsed_since_first": elapsed_since_first,   # window for the new throughput
+        "produced_units": produced_units,
+        "throughput_rph": throughput_rph,             # NEW: since the first Stage-6 unit
+        "throughput_rph_since_start": throughput_rph_since_start,  # legacy/reference
+    }
+    
     return (
         df_units,
         df_wip,
@@ -426,7 +449,8 @@ def run_sim(config: dict = None, progress_callback=None):
         finished_goods3,
         finished_goods4,
         finished_goods5,
-        finished_goods6
+        finished_goods6,
+        run_meta
     )
 
 
@@ -475,251 +499,3 @@ if __name__ == "__main__":
 
     
     
-#     run_sim()
-    
-#     df_util = build_utilisation_df(df_move, SIM_TIME)
-#     print("\n=== Machine Utilisation ===")
-#     print(df_util.to_string(index=False))
-#     df_util.to_csv("machine_utilisation.csv", index=False)
-    
-
-
-
-
-# # plant_sim/run_sim.py
-
-# import simpy, random, pandas as pd
-# from . import config as cfg
-# import plant_sim.helpers as helpers
-# from .helpers import (
-#     init_queues,
-#     movement_log,
-#     wip_history,
-#     unit_record,
-#     log_move,
-#     log_wip,
-#     machine_status,
-#     downtime,
-#     status_history               
-# )
-# from .config import Forklift_Capacity
-# from . import stage1, stage2, stage3, stage4, stage5
-
-
-# def run_sim():
-#     # ─── setup ─────────────────────────────────────────
-#     helpers.global_item_counter = 0
-#     movement_log.clear()
-#     wip_history.clear()
-#     unit_record.clear()
-#     status_history.clear()
-    
-#     random.seed(42)
-#     env = simpy.Environment()
-#     helpers.forklifts = simpy.Resource(env, capacity=Forklift_Capacity)
-    
-#     # initialize queues
-#     queues = init_queues(cfg.network)
-#     queues['test_feed'] = []  # Stage 4 feeder
-
-#     # stage buffers
-#     storage_after_press = []
-#     finished_goods      = []
-#     finished_goods2     = []
-#     finished_goods3     = []
-#     finished_goods4     = []
-#     finished_goods5     = []
-
-#     # link buffers
-#     queues['storage_after_press'] = storage_after_press
-#     queues['finished_goods']      = finished_goods
-#     queues['finished_goods2']     = finished_goods2
-#     queues['finished_goods3']     = finished_goods3
-#     queues['finished_goods4']     = finished_goods4
-#     queues['finished_goods5']     = finished_goods5 
-
-#     # OEE / downtime setup
-#     for name, props in cfg.network.items():
-#         if "process_time" in props and "OEE" in props:
-#             if props['OEE'] > 0:
-#                 machine_status[name] = True
-#                 env.process(downtime(env, name, props['OEE']))
-#             else:
-#                 machine_status[name] = False
-#                 print(f"[INIT] {name} status set to {machine_status[name]}")
-
-#     # register stages
-#     stage1.build(env, cfg, queues, storage_after_press, finished_goods)
-#     stage2.build(env, cfg, queues, finished_goods, finished_goods2)
-#     stage3.build(env, cfg, queues, finished_goods2, finished_goods3)
-    
-#     # set up HDT⇄SPHDT token for Stage 4
-#     queues['hdt_token'] = simpy.Container(env, init=1, capacity=1)
-#     stage4.build(env, cfg, queues,
-#                  finished_goods3=queues['finished_goods3'],
-#                  finished_goods4=queues['finished_goods4'])
-    
-#     stage5.build(env, cfg, queues,
-#                  finished_goods4=queues['finished_goods4'],
-#                  wipi_ut=queues.get('WIPi_UT', []),
-#                  machine_status=machine_status)
-
-#     # defect loop (unchanged)
-#     def wc_defect_loop(env):
-#         while True:
-#             yield env.timeout(cfg.WC_REJECT_INTERVAL)
-#             while not queues['WIPo_WC']:
-#                 yield env.timeout(1)
-#             uid = queues['WIPo_WC'].pop(0)
-#             log_move(env, uid, 'WIPo_WC', 'rework_CL', 'reject')
-#             yield env.timeout(cfg.network['CL1']['process_time'])
-#             log_move(env, uid, 'rework_CL', 'WIPo_CL', 'rework_cut')
-#             t = cfg.network['WIPo_CL']['transport_times']
-#             t = t[0] if isinstance(t, list) else t
-#             yield env.timeout(t)
-#             queues['WIPi_WC'].append(uid)
-#             log_wip(env, 'WIPi_WC', queues)
-#             log_move(env, uid, 'WIPo_CL', 'WIPi_WC', 'rework_move')
-
-#     env.process(wc_defect_loop(env))
-
-#     # ─── run the simulation ────────────────────────────
-#     env.run(until=cfg.SIM_TIME)
-
-#     # ─── collect ending WIP counts ─────────────────────
-#     final_wip = {}
-#     for node, q in queues.items():
-#         if node.startswith("WIPo_") or node.startswith("WIPi_") or node == "hold":
-#             if isinstance(q, simpy.Store):
-#                 count = len(q.items)
-#             else:
-#                 count = len(q)
-#             final_wip[node] = count
-
-#     # ─── build DataFrames ──────────────────────────────
-#     df_units = pd.DataFrame([
-#         {
-#             "UnitID":        uid,
-#             "SAW":           rec.get("SAW"),
-#             "ArrivalTime":   rec.get("EntryTime"),
-#             "Cooling":       rec.get("Cooling"),
-#             "Stage1Storage": rec.get("FinalGoodsTime", ""),
-#             "Stage2Storage": rec.get("FinalStorageTime", ""), 
-#             "Stage3Storage": rec.get("FinalStorage2Time", ""),
-#             "Stage4Storage": rec.get("Stage4Storage", ""),
-#             "Stage5Storage": rec.get("Stage5Storage", "")
-#         }
-#         for uid, rec in unit_record.items()
-#     ])
-    
-#     # Convert these columns to float so decimal="," works in to_csv:
-#     float_cols = [
-#         'ArrivalTime',
-#         'Cooling',
-#         'Stage1Storage',
-#         'Stage2Storage',
-#         'Stage3Storage',
-#         'Stage4Storage',
-#         'Stage5Storage',
-#     ]
-
-#     for c in float_cols:
-#         df_units[c] = pd.to_numeric(
-#             df_units[c]
-#                 .astype(str)
-#                 .str.replace(',', '')    # remove any thousands‐separator commas
-#                 .str.replace(' ', ''),   # remove any stray spaces
-#             errors='coerce'
-#         )
-    
-#     df_wip  = pd.DataFrame(wip_history)
-#     df_move = pd.DataFrame(movement_log).sort_values("Time").reset_index(drop=True)
-#     df_final_wip = (
-#         pd.DataFrame([{"Node": k, "EndingWIP": v} for k, v in final_wip.items()])
-#         .sort_values("Node").reset_index(drop=True)
-#     )
-
-#     # ─── console diagnostics ────────────────────────────
-#     print("\n--- df_units head ---")
-#     print(df_units.head())
-#     print("\n--- df_wip head ---")
-#     print(df_wip.head())
-#     print("\n--- df_move head ---")
-#     print(df_move.head())
-#     print("\n--- Ending WIP in each WIP buffer ---")
-#     print(df_final_wip)
-#     print("\n--- Finished stage 1 count:", len(finished_goods))
-#     print("\n--- Finished stage 2 count:",      len(finished_goods2))
-#     print("\n--- Finished stage 3 count:",      len(finished_goods3))
-#     print("--- Hold WIP count:",              len(queues.get('hold', [])))
-#     print("--- Finished stage 4 count:",      len(finished_goods4))
-#     print("--- Finished stage 5 count:",      len(finished_goods5))
-
-#     # ─── Stage 4 machine uptimes ───────────────────────
-#     print("\n--- Stage 4 machine uptimes ---")
-#     for machine in (
-#         "PO1","PO2","PO3",
-#         "HT","SPHDT","HDT",
-#         "CUT1","CUT2","CUT3","CUT4",
-#         "MTT","TT","HS"
-#     ):
-#         events = status_history.get(machine, [])
-#         if len(events) < 2:
-#             print(f"{machine:>5}: no downtime data")
-#             continue
-
-#         uptime = sum(
-#             (t2 - t1)
-#             for (t1, was_up), (t2, now_up) in zip(events, events[1:])
-#             if was_up
-#         )
-#         util = uptime / env.now
-#         print(f"{machine:>5}: {util:.0%} uptime")
-
-#     # ─── Stage 5 machine uptimes ───────────────────────
-#     print("\n--- Stage 5 machine uptimes ---")
-#     for machine in (
-#         # FO machines
-#         "FO1","FO2","FO3","FO4",
-#         # UT & SR1
-#         "UT","SR1",
-#         # DB machines
-#         "DB1","DB2","DB3","DB4","DB5","DB6",
-#         # KN machines
-#         "KN1","KN2",
-#         # PDB machines
-#         "PDB1","PDB2",
-#         # FC machines
-#         "FC1","FC2","FC3",
-#         # SP1
-#         "SP1"
-#     ):
-#         events = status_history.get(machine, [])
-#         if len(events) < 2:
-#             print(f"{machine:>5}: no downtime data")
-#             continue
-
-#         uptime = sum(
-#             (t2 - t1)
-#             for (t1, was_up), (t2, now_up) in zip(events, events[1:])
-#             if was_up
-#         )
-#         util = uptime / env.now
-#         print(f"{machine:>5}: {util:.0%} uptime")
-
-#     # ─── return all outputs ─────────────────────────────
-#     return (
-#         df_units,
-#         df_wip,
-#         df_move,
-#         df_final_wip,
-#         finished_goods,
-#         finished_goods2,
-#         finished_goods3,
-#         finished_goods4,
-#         finished_goods5
-#     )
-
-
-# if __name__ == "__main__":
-#     run_sim()

@@ -9,7 +9,7 @@ def inject_style():
 
 HELP_TEXT = """
 <div class="top-banner"></div>
-<div class="hero-title">BB Plant Simulator</div>
+<div class="hero-title">BB M0121 Plant Simulator</div>
 
 <div class="info-box">
   <div class="app-heading">Plant Simulation Configuration</div>
