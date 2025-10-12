@@ -47,6 +47,45 @@ def run_sim(config: dict = None, progress_callback=None):
     random.seed(42)
     env = simpy.Environment()
     
+    # ── Early-stop setup (stop once FG6 / Stage6Storage hits target) ───────────
+    from plant_sim import helpers as h
+
+    target_units = int(
+        config.get("EARLY_STOP_TARGET_UNITS", 0)
+        or config.get("TARGET_UNITS", 0)
+    )
+
+    # Arm the early-stop event inside helpers
+    done_event = h.enable_early_stop(env, target_units)
+    
+    # A list that ends the sim once it reaches N items
+    class _StopAtN(list):
+        def __init__(self, event, target, env, iterable=None):
+            super().__init__(iterable or [])
+            self._event = event
+            self._target = int(target or 0)
+            self._env = env
+
+        def _maybe_stop(self):
+            if self._event is not None and not self._event.triggered:
+                if len(self) >= self._target:
+                    self._event.succeed(self._env.now)
+
+        # intercept mutations that add items
+        def append(self, item):
+            super().append(item)
+            self._maybe_stop()
+
+        def extend(self, items):
+            super().extend(items)
+            self._maybe_stop()
+
+        def insert(self, index, item):
+            super().insert(index, item)
+            self._maybe_stop()
+
+
+    
     # ── override global settings if passed in ────────────────────
     sim_time = config.get("SIM_TIME", cfg.SIM_TIME)
     interarrival = config.get("INTERARRIVAL", cfg.INTERARRIVAL)
@@ -88,7 +127,10 @@ def run_sim(config: dict = None, progress_callback=None):
     finished_goods3     = []
     finished_goods4     = []
     finished_goods5     = []
-    finished_goods6     = []
+    finished_goods6     = (
+        _StopAtN(done_event, target_units, env)  # ← use the proxy when a target is set
+        if target_units > 0 else []
+    )
 
     # link buffers
     queues['storage_after_press'] = storage_after_press
@@ -216,20 +258,25 @@ def run_sim(config: dict = None, progress_callback=None):
         
 #     env.run(until=sim_time)
 
-    # ─── run the simulation (with optional progress reporting) ─────────
-    if progress_callback:
-        orig_step   = env.step       # keep a reference to the real step()
+    # ─── Progress: only show a bar in time→units mode (no target) ─────────────
+    is_units_to_time = target_units > 0  # early-stop mode when a target is set
 
+    if progress_callback and (not is_units_to_time) and sim_time:
+        orig_step = env.step
         def step_and_report(*args, **kwargs):
-            """Wrap env.step so we can ping the UI every time the clock moves."""
-            result = orig_step(*args, **kwargs)          # advance sim
-            if sim_time:                                # guard against /0
-                progress_callback(env.now / sim_time)   # 0 → 1
+            result = orig_step(*args, **kwargs)
+            # 0→1 progress based on sim clock; clamp for safety
+            progress_callback(min(env.now / sim_time, 1.0))
             return result
+        env.step = step_and_report
+    # else: in units→time mode we keep spinner only (no progress_callback calls)
 
-        env.step = step_and_report                      # monkey-patch only for this run
-
-    env.run(until=sim_time)                             # ← single official run call
+    # choose termination condition
+    # ─── Run: early stop wins if a target is set ───────────────────────────────
+    if done_event is not None:
+        env.run(until=done_event)       # units→time: pure event-driven
+    else:
+        env.run(until=sim_time)         # time→units: run to SIM_TIME
 
     # ─── collect ending WIP counts ─────────────────────
     final_wip = {}

@@ -1,0 +1,11 @@
+Go to your terminal and cd into the correct folder (same one that you use to run code)
+
+1. git add . (adds all files you changed into git's view)
+2. git commit -m "your commit message" (this is the message we will see and finalise what you want to push)
+3. git push (will push it into our shared online repo) 
+	if that does not work... "git push --force" (it will force push it) 
+
+How to pull:  git pull
+
+
+:)

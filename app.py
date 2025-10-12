@@ -30,29 +30,167 @@ import pandas as pd
 
 inject_style()
 
+# Put this near the top of app.py, after inject_style() and set_page_config()
+# 1) A page-flag we can target from CSS
+st.markdown("<span id='lp-flag' style='display:none'></span>", unsafe_allow_html=True)
+
 ########################################################################################
 
-# Hide sidebar/nav on the landing page
+# 1) Add a local flag so CSS can target only this page
+st.markdown("<span id='lp-flag' style='display:none'></span>", unsafe_allow_html=True)
+
+# 2) Hide the sidebar + nav + toggle ONLY on this page (scoped by #lp-flag)
 st.markdown("""
 <style>
-  [data-testid="stSidebar"] { display: none; }
-  [data-testid="stSidebarNav"] { display: none; }
+  /* Hide the sidebar pane + the multipage nav only when #lp-flag exists */
+  :root:has(#lp-flag) [data-testid="stSidebar"]    { display: none !important; }
+  :root:has(#lp-flag) [data-testid="stSidebarNav"] { display: none !important; }
+
+  /* Hide all versions of the toggle/chevron on this page */
+  :root:has(#lp-flag) [data-testid="collapsedControl"] { display: none !important; }
+  :root:has(#lp-flag) header [data-testid="stSidebarCollapseControl"] { display: none !important; }
+  :root:has(#lp-flag) header [data-testid="stSidebarCollapseButton"]  { display: none !important; }
+  :root:has(#lp-flag) header [data-testid="baseButton-header"]        { display: none !important; }
+  :root:has(#lp-flag) header [data-testid="baseButton-headerNoPadding"] { display: none !important; }
+  :root:has(#lp-flag) header button[title*="sidebar"]  { display: none !important; }
+  :root:has(#lp-flag) header button[aria-label*="sidebar"] { display: none !important; }
+
+  /* Optional: remove the left padding so content is truly full-width */
+  :root:has(#lp-flag) section.main > div { padding-left: 0 !important; }
 </style>
 """, unsafe_allow_html=True)
 
-st.title("Choose how to run the simulation")
 
-col1, col2 = st.columns(2)
-with col1:
-    st.page_link("pages/01_Time_to_Units.py", label="⏱️  Time → Units", icon="⏱️",
-                 help="Run a fixed simulated duration and see output/KPIs.")
-with col2:
-    st.page_link("pages/02_Units_to_Time.py", label="📦  Units → Time", icon="📦",
-                 help="Enter a finished-units target and get the required time.")
+
+# Hide sidebar/nav on the landing page
+# st.markdown("""
+# <style>
+#   [data-testid="stSidebar"] { display: none; }
+#   [data-testid="stSidebarNav"] { display: none; }
+# </style>
+# """, unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <h1 style='text-align: center; font-size: 2.2em; font-weight: 700;'>
+        BB M0121 Production Simulator
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+
+st.markdown(
+    """
+    <h1 style='text-align: center; font-size: 1.0em; font-weight: 300;'>
+        Select a mode below based on your desired input and output.
+    </h1>
+    """,
+    unsafe_allow_html=True
+)
+
+
+# Full-width, centered, stacked buttons (Time → Units on top)
+# st.markdown(
+#     """
+#     <style>
+#       .mode-stack{
+#         max-width: 560px;              /* narrower card stack (adjust to taste) */
+#         margin: 8px auto 0;            /* <- this centers the whole stack */
+#         display: flex; 
+#         flex-direction: column; 
+#         gap: 12px;
+#         align-items: stretch;          /* buttons fill the stack width */
+#         justify-content: center;       /* defensive centering */
+#       }
+#       .mode-stack [data-testid="stButton"] > button{
+#         width: 100%;
+#         border: 1px solid #d0d4da;
+#         border-radius: 12px;
+#         padding: 14px 18px;
+#         background: rgba(255,255,255,.7);
+#         box-shadow: 0 1px 2px rgba(0,0,0,.05);
+#         font-weight: 600;
+#         display: flex; align-items: center; justify-content: center; /* centered label */
+#         transition: border-color .15s, box-shadow .15s, transform .05s;
+#       }
+#       .mode-stack [data-testid="stButton"] > button:hover{
+#         border-color: #8ab4f8;
+#         box-shadow: 0 4px 12px rgba(0,0,0,.08);
+#         transform: translateY(-1px);
+#       }
+#     </style>
+#     """,
+#     unsafe_allow_html=True,
+# )
+
+st.markdown(
+    """
+    <style>
+      /* Style all Streamlit buttons */
+      [data-testid="stButton"] > button{
+        width: 100%;
+        border: 1px solid #d0d4da;
+        border-radius: 12px;
+        padding: 14px 18px;
+        background: rgba(255,255,255,.7);
+        box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        font-weight: 600;
+        display: flex; align-items: center; justify-content: center;
+        transition: border-color .15s, box-shadow .15s, transform .05s;
+      }
+      [data-testid="stButton"] > button:hover{
+        border-color: #8ab4f8;
+        box-shadow: 0 4px 12px rgba(0,0,0,.08);
+        transform: translateY(-1px);
+      }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Center column for the two stacked buttons
+padL, center, padR = st.columns([1, 2, 1])
+
+with center:
+    if st.button("⏱️ Time → Units", key="btn_time_units"):
+        st.switch_page("pages/01_Time_to_Units.py")
+
+    st.write("")  # spacer
+
+    if st.button("📦 Units → Time", key="btn_units_time"):
+        st.switch_page("pages/02_Units_to_Time.py")
+
+
+# st.markdown("<div class='mode-stack'>", unsafe_allow_html=True)
+
+# if st.button("⏱️ Time → Units", key="btn_time_units"):
+#     st.switch_page("pages/01_Time_to_Units.py")
+
+# if st.button("📦 Units → Time", key="btn_units_time"):
+#     st.switch_page("pages/02_Units_to_Time.py")
+
+# st.markdown("</div>", unsafe_allow_html=True)
+
+
+
+
+# # Center column for the two stacked links
+# _, center, _ = st.columns([1, 2, 1])
+
+# with center:
+#     st.page_link(
+#         "pages/01_Time_to_Units.py",
+#         label="⏱️ Time → Units",
+#         help="Run a fixed simulated duration and see output/KPIs.",
+#     )
+#     st.write("")  # spacer
+#     st.page_link(
+#         "pages/02_Units_to_Time.py",
+#         label="📦 Units → Time",
+#         help="Enter a finished-units target and get the required time.",
+#     )
 
 st.markdown("---")
-st.caption("Open one of the modes above to configure and run the simulation.")
 
 # Stop here — nothing else should render on the landing page
 st.stop()
-

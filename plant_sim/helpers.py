@@ -42,6 +42,10 @@ def log_wip(env, node, queues):
 
 # --------------------------------------------------------------------
 def log_move(env, uid, src, dest, action):
+    """
+    Record every movement and trigger early-stop if Dispatch/FG6 target reached.
+    """
+    # --- normal movement logging ------------------------------------------------
     movement_log.append({
         "Time":   env.now,
         "UnitID": uid,
@@ -49,8 +53,27 @@ def log_move(env, uid, src, dest, action):
         "To":     dest,
         "Action": action
     })
+
     if PRINT_MOVES:
         print(f"[{env.now:6.1f}] {uid:>6}  {action:<8}  {src:>22} → {dest}")
+
+    # --- Early-stop hook --------------------------------------------------------
+    try:
+        # only if armed AND this move lands in Dispatch/Stage6
+        if EARLY_STOP_EVENT is not None and not EARLY_STOP_EVENT.triggered:
+            if _is_dispatch_node(dest):
+                global EARLY_STOP_COUNT
+                EARLY_STOP_COUNT += 1
+
+                # optional debug line (remove or comment if noisy)
+                # print(f"[early-stop] FG6 arrivals: {EARLY_STOP_COUNT}/{EARLY_STOP_TARGET}")
+
+                if EARLY_STOP_COUNT >= EARLY_STOP_TARGET:
+                    EARLY_STOP_EVENT.succeed(env.now)
+    except Exception:
+        # never let early-stop interfere with normal logging
+        pass
+
 
 downtime_log = {}
 
@@ -144,6 +167,36 @@ def batch_move(env,
                 log_move(env, uid, wipo, dest, "batch")
         else:
             yield env.timeout(poll)
+            
+            
+# --- Early-stop globals (opt-in) --------------------------------------------
+EARLY_STOP_TARGET = 0            # N units to Dispatch/FG6 (0 = disabled)
+EARLY_STOP_EVENT  = None         # simpy.Event set by enable_early_stop()
+EARLY_STOP_COUNT  = 0            # how many units have arrived so far
+
+# Customize aliases your model uses for Dispatch/Stage 6
+DISPATCH_ALIASES  = {
+    "FG6", "Dispatch", "Stage6", "Stage6Storage",
+    "stage6storage", "FinishedGoods", "Finished Goods"
+}
+
+def _is_dispatch_node(name):
+    s = str(name)
+    if s in DISPATCH_ALIASES:
+        return True
+    s = s.lower().strip()
+    return ("dispatch" in s) or ("fg6" in s) or ("stage 6" in s) or ("stage6" in s) or ("stage6storage" in s)
+
+def enable_early_stop(env, target_units, aliases=None):
+    """Call once per run to arm early-stop based on Dispatch arrivals."""
+    global EARLY_STOP_TARGET, EARLY_STOP_EVENT, EARLY_STOP_COUNT, DISPATCH_ALIASES
+    EARLY_STOP_TARGET = int(target_units or 0)
+    EARLY_STOP_COUNT  = 0
+    if aliases:
+        DISPATCH_ALIASES = set(aliases)
+    EARLY_STOP_EVENT = env.event() if EARLY_STOP_TARGET > 0 else None
+    return EARLY_STOP_EVENT
+
 
 
 def build_utilisation_df(
