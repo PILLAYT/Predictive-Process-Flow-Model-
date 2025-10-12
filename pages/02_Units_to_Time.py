@@ -129,8 +129,6 @@ MP_HELP = """
     <li><strong>Machine</strong>: Choose a specific machine instance.</li>
     <li><strong>Availability</strong>: The OEE of the selected machine.</li>
     <li><strong>Cycle Time</strong>: Custom cycle time if OEE > 0.</li>
-    <li><strong>Weigh and Classify Reject Interval</strong>: For overweight shells identified at Weighing and Classification.</li>
-    <li><strong>Tensile Test Fail Interval</strong>: For batches that fail the Tensile Test. Note these failed batches go into a scrap buffer.</li>
   </ul>
 </div>
 """
