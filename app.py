@@ -89,81 +89,46 @@ st.markdown(
 )
 
 
-# Full-width, centered, stacked buttons (Time → Units on top)
-# st.markdown(
-#     """
-#     <style>
-#       .mode-stack{
-#         max-width: 560px;              /* narrower card stack (adjust to taste) */
-#         margin: 8px auto 0;            /* <- this centers the whole stack */
-#         display: flex; 
-#         flex-direction: column; 
-#         gap: 12px;
-#         align-items: stretch;          /* buttons fill the stack width */
-#         justify-content: center;       /* defensive centering */
-#       }
-#       .mode-stack [data-testid="stButton"] > button{
-#         width: 100%;
-#         border: 1px solid #d0d4da;
-#         border-radius: 12px;
-#         padding: 14px 18px;
-#         background: rgba(255,255,255,.7);
-#         box-shadow: 0 1px 2px rgba(0,0,0,.05);
-#         font-weight: 600;
-#         display: flex; align-items: center; justify-content: center; /* centered label */
-#         transition: border-color .15s, box-shadow .15s, transform .05s;
-#       }
-#       .mode-stack [data-testid="stButton"] > button:hover{
-#         border-color: #8ab4f8;
-#         box-shadow: 0 4px 12px rgba(0,0,0,.08);
-#         transform: translateY(-1px);
-#       }
-#     </style>
-#     """,
-#     unsafe_allow_html=True,
-# )
 
-# --- Centered stacked buttons (version-proof) ---
-st.markdown("""
-<style>
-  /* a self-contained wrapper that doesn't rely on Streamlit internals */
-  #landing-buttons{
-    display: flex;
-    flex-direction: column;
-    align-items: center;     /* centers the stack itself */
-    gap: 12px;
-    margin-top: 8px;
-  }
-  /* each button sits in a fixed-width lane that is centered */
-  #landing-buttons .btn-lane{
-    width: 100%;
-    max-width: 560px;        /* tweak width as you like */
-  }
-  /* make the actual button fill the lane width */
-  #landing-buttons .btn-lane > div button{
-    width: 100%;
-  }
-</style>
-<div id="landing-buttons">
-  <div class="btn-lane">
-""", unsafe_allow_html=True)
 
-if st.button("⏱️ Time → Units", key="btn_time_units"):
-    st.switch_page("pages/01_Time_to_Units.py")
+st.markdown(
+    """
+    <style>
+      /* Style all Streamlit buttons */
+      [data-testid="stButton"] > button{
+        width: 100%;
+        border: 1px solid #d0d4da;
+        border-radius: 12px;
+        padding: 14px 18px;
+        background: rgba(255,255,255,.7);
+        box-shadow: 0 1px 2px rgba(0,0,0,.05);
+        font-weight: 600;
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        transition: border-color .15s, box-shadow .15s, transform .05s;
+      }
+      [data-testid="stButton"] > button:hover{
+        border-color: #8ab4f8;
+        box-shadow: 0 4px 12px rgba(0,0,0,.08);
+        transform: translateY(-1px);
+      }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-st.markdown("""
-  </div>
-  <div class="btn-lane">
-""", unsafe_allow_html=True)
+# Center column for the two stacked buttons
+padL, center, padR = st.columns([1, 2, 1])
 
-if st.button("📦 Units → Time", key="btn_units_time"):
-    st.switch_page("pages/02_Units_to_Time.py")
+with center:
+    if st.button("⏱️ Time → Units", key="btn_time_units"):
+        st.switch_page("pages/01_Time_to_Units.py")
 
-st.markdown("""
-  </div>
-</div>
-""", unsafe_allow_html=True)
+    st.write("")  # spacer
 
+    if st.button("📦 Units → Time", key="btn_units_time"):
+        st.switch_page("pages/02_Units_to_Time.py")
 
 
 # st.markdown("<div class='mode-stack'>", unsafe_allow_html=True)
