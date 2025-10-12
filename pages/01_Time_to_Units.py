@@ -509,7 +509,7 @@ st.markdown(HELP_TEXT, unsafe_allow_html=True)
 
 # ── 1️⃣ Plant-Simulation Configuration card ───────────
 with st.container():
-    st.markdown("<h3 class='cfg-card-title'>Plant Simulation Configuration</h3>", unsafe_allow_html=True)
+#     st.markdown("<h3 class='cfg-card-title'>Plant Simulation Configuration</h3>", unsafe_allow_html=True)
     for key in ["SIM_TIME", "INTERARRIVAL", "Forklift_Capacity"]:
         if key in general_core:
             render_number_input(key, general_core[key])
@@ -532,7 +532,7 @@ MP_HELP = """
 """
 st.markdown(MP_HELP, unsafe_allow_html=True)
 
-st.markdown("<div class='app-heading'>Machine Parameters</div>", unsafe_allow_html=True)
+# st.markdown("<div class='app-heading'>Machine Parameters</div>", unsafe_allow_html=True)
 col1, col2 = st.columns(2)
 with col1:
     disp = st.selectbox("Machine Group", list(prefix_by_label.keys()))
